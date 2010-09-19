@@ -45,11 +45,11 @@
   (if (not (string= environment "work")) (setq c-style "stroustrup")))
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
-(c-add-style "update-java"
+(c-add-style "ufsi-java"
              '((c-basic-offset . 3)
                (c-comment-only-line-offset . (0 . 0))
                (c-auto-align-backslashes . nil)
-               (c-offsets-alist . (;; update-java-style
+               (c-offsets-alist . (;; ufsi-java-style
                                    (inline-open . 0)
                                    (topmost-intro-cont . +)
                                    (statement-block-intro . +)
@@ -91,7 +91,7 @@
              nil)
 
 (defun my-java-mode-hook ()
-  (setq c-style (if (string= environment "work") "update-java" "java"))
+  (setq c-style (if (string= environment "work") "ufsi-java" "java"))
   (require 'java-mode-indent-annotations)
   (java-mode-indent-annotations-setup))
 (add-hook 'java-mode-hook 'my-java-mode-hook)
