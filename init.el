@@ -162,8 +162,9 @@
   (if (file-exists-p org-directory)
       (progn
         (cd org-directory)
-        (shell-command "svn update")
-        (shell-command "svn commit -m \"\""))))
+        (shell-command "git pull")
+        (shell-command "git commit -a -m \"Updated org files.\"")
+        (shell-command "git push"))))
 
 (defun count-words (&optional begin end)
   "Returns the number of words between start and end.
@@ -283,7 +284,7 @@ If no region is defined, all words in the buffer are counted."
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/org/tasks.org"))))
+ '(org-agenda-files (quote ("~/org/ou/tasks.org" "~/org/tasks.org"))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
