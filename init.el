@@ -2,7 +2,7 @@
 ;; Behaviour
 ;;-------------------------------------------------------------------------
 
-(setq environment "home")
+(setq environment "work")
 (setq inhibit-splash-screen t)
 (column-number-mode t)
 (show-paren-mode t)
@@ -184,12 +184,11 @@ If no region is defined, all words in the buffer are counted."
 ;; color-theme
 (if window-system
     (progn
-      (if (file-exists-p "~/.emacs.d/color-theme")
-          (add-to-list 'load-path "~/.emacs.d/color-theme"))
       (if (require 'color-theme "color-theme" t)
-          (progn (if (fboundp 'color-theme-initialize)
-                      (color-theme-initialize))
-                  (color-theme-charcoal-black)))))
+          (progn
+            (if (fboundp 'color-theme-initialize)
+                (color-theme-initialize))
+            (color-theme-charcoal-black)))))
 
 ;; org-mode
 (setq org-directory (if (string= environment "work")
