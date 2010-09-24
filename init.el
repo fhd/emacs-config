@@ -130,10 +130,10 @@
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-hook)
 
 ;; flyspell-mode
+(if (string= system-type "windows-nt")
+    (defadvice flyspell-mode (around flyspell-mode-around)))
 (defun my-flyspell-mode-hook ()
-  ;; ispell/flyspell doesn't work on Windows
-  (if (not (string= system-type "windows-nt"))
-      (flyspell-buffer)))
+  (flyspell-buffer))
 (add-hook 'flyspell-mode-hook 'my-flyspell-mode-hook)
 
 
@@ -265,6 +265,7 @@ If no region is defined, all words in the buffer are counted."
 (add-to-list 'auto-mode-alist '("\.java$" . gwt-mumamo-mode))
 
 ;; markdown-mode
+(require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))
 
 ;; clojure-mode
@@ -274,6 +275,7 @@ If no region is defined, all words in the buffer are counted."
 ;; speedbar
 (eval-after-load "speedbar" '(load-library "sb-html"))
 (eval-after-load "speedbar" '(load-library "sb-texinfo"))
+
 
 ;;-------------------------------------------------------------------------
 ;; Customize
