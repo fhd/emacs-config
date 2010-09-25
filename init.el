@@ -2,7 +2,7 @@
 ;; Behaviour
 ;;-------------------------------------------------------------------------
 
-(setq environment "work")
+(setq at-work nil)
 (setq inhibit-splash-screen t)
 (column-number-mode t)
 (show-paren-mode t)
@@ -34,15 +34,15 @@
 
 ;; c-mode
 (defun my-c-mode-common-hook ()
-  (setq tab-width (if (string= environment "work") 3 4))
+  (setq tab-width (if at-work 3 4))
   (setq indent-tabs-mode nil)
-  (setq c-style (if (string= environment "work") "bsd" "k&r"))
+  (setq c-style (if at-work "bsd" "k&r"))
   (setq c-basic-offset tab-width)
   (flyspell-prog-mode))
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 (defun my-c++-mode-hook ()
-  (if (not (string= environment "work")) (setq c-style "stroustrup")))
+  (if (not at-work) (setq c-style "stroustrup")))
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 (c-add-style "ufsi-java"
@@ -91,7 +91,7 @@
              nil)
 
 (defun my-java-mode-hook ()
-  (setq c-style (if (string= environment "work") "ufsi-java" "java"))
+  (setq c-style (if at-work "ufsi-java" "java"))
   (require 'java-mode-indent-annotations)
   (java-mode-indent-annotations-setup))
 (add-hook 'java-mode-hook 'my-java-mode-hook)
@@ -191,9 +191,7 @@ If no region is defined, all words in the buffer are counted."
             (color-theme-charcoal-black)))))
 
 ;; org-mode
-(setq org-directory (if (string= environment "work")
-                        "Z:/org/"
-                      "~/org/"))
+(setq org-directory (if at-work "Z:/org/" "~/org/"))
 (setq org-hide-leading-stars t)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cl" 'org-store-link)
@@ -211,7 +209,7 @@ If no region is defined, all words in the buffer are counted."
 (global-set-key "\C-cr" 'org-remember)
 
 ;; maxima
-(if (string= environment "work")
+(if at-work
     (progn
       (setq exec-path (append exec-path '("d:/Programme/Maxima-5.20.0/bin")))
       (add-to-list 'load-path
