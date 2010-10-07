@@ -16,6 +16,7 @@
 (setq-default truncate-lines t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(server-start)
 
 ;; Use the default browser
 (if (and window-system (string= system-type "gnu/linux"))
