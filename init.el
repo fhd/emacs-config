@@ -98,7 +98,8 @@
 ;; lisp-mode
 (defun my-lisp-mode-hook ()
   (setq indent-tabs-mode nil)
-  (flyspell-prog-mode))
+  (flyspell-prog-mode)
+  (highlight-parentheses-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
@@ -194,7 +195,9 @@ If no region is defined, all words in the buffer are counted."
 (setq org-hide-leading-stars t)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cl" 'org-store-link)
-(add-hook 'org-mode-hook (lambda ()(auto-fill-mode t)))
+(add-hook 'org-mode-hook (lambda () (progn
+                                      (auto-fill-mode t)
+                                      (flyspell-mode t))))
 
 ;; remember-mode
 (if (not (fboundp 'remember-mode))
@@ -265,14 +268,20 @@ If no region is defined, all words in the buffer are counted."
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))
 
+;; highlight-parentheses-mode
+(require 'highlight-parentheses)
+
 ;; clojure-mode
 (autoload 'clojure-mode "clojure-mode" "" t)
 (add-to-list 'auto-mode-alist '("\.clj$" . clojure-mode))
+(defun my-clojure-mode-hook ()
+  (flyspell-prog-mode)
+  (highlight-parentheses-mode))
+(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
 
 ;; speedbar
 (eval-after-load "speedbar" '(load-library "sb-html"))
 (eval-after-load "speedbar" '(load-library "sb-texinfo"))
-
 
 ;;-------------------------------------------------------------------------
 ;; Customize
