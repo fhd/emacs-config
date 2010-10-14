@@ -274,10 +274,7 @@ If no region is defined, all words in the buffer are counted."
 ;; clojure-mode
 (autoload 'clojure-mode "clojure-mode" "" t)
 (add-to-list 'auto-mode-alist '("\.clj$" . clojure-mode))
-(defun my-clojure-mode-hook ()
-  (flyspell-prog-mode)
-  (highlight-parentheses-mode))
-(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
+(add-hook 'clojure-mode-hook 'my-lisp-mode-hook)
 
 ;; speedbar
 (eval-after-load "speedbar" '(load-library "sb-html"))
