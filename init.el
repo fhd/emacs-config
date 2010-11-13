@@ -19,8 +19,11 @@
 (if (and window-system (string= system-type "gnu/linux"))
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "xdg-open"))
+(if (and window-system (< (x-display-pixel-height) 1024))
+    (progn
+      (set-face-attribute 'default nil :height 110)
+      (add-to-list 'default-frame-alist (cons 'height 34))))
 (server-start)
-
 
 ;;-------------------------------------------------------------------------
 ;; Hooks
@@ -186,8 +189,8 @@ If no region is defined, all words in the buffer are counted."
     (progn
       (if (require 'color-theme "color-theme" t)
           (progn
-            (if (fboundp 'color-theme-initialize)
-                (color-theme-initialize))
+            ;; (if (fboundp 'color-theme-initialize)
+            ;;     (color-theme-initialize))
             (color-theme-charcoal-black)))))
 
 ;; org-mode
