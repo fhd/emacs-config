@@ -183,11 +183,8 @@ If no region is defined, all words in the buffer are counted."
 ;; color-theme
 (if window-system
     (progn
-      (if (require 'color-theme "color-theme" t)
-          (progn
-            ;; (if (fboundp 'color-theme-initialize)
-            ;;     (color-theme-initialize))
-            (color-theme-charcoal-black)))))
+      (require 'zenburn)
+      (color-theme-zenburn)))
 
 ;; org-mode
 (setq org-directory (if at-work "Z:/org/" "~/org/"))
