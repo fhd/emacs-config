@@ -131,9 +131,6 @@
 ;; flyspell-mode
 (if (string= system-type "windows-nt")
     (defadvice flyspell-mode (around flyspell-mode-around)))
-(defun my-flyspell-mode-hook ()
-  (flyspell-buffer))
-(add-hook 'flyspell-mode-hook 'my-flyspell-mode-hook)
 
 
 ;;-------------------------------------------------------------------------
@@ -224,12 +221,6 @@ If no region is defined, all words in the buffer are counted."
     (setq imaxima-fnt-size "large")))
 (setq imaxima-use-maxima-mode-flag t)
 
-;; nxhtml
-(if (fboundp 'nxhtml-load-nxhtml-from-emacsw32)
-    (nxhtml-load-nxhtml-from-emacsw32)
-  (load "~/.emacs.d/nxhtml/autostart"))
-(setq mumamo-chunk-coloring 1)
-
 ;; espresso-mode
 (autoload #'espresso-mode "espresso" "Start espresso-mode" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
@@ -257,11 +248,6 @@ If no region is defined, all words in the buffer are counted."
 ;; textile-mode
 (autoload 'textile-mode "textile-mode" "" t)
 (add-hook 'textile-mode-hook 'visual-line-mode)
-
-;; gwt-mumamo-mode
-(add-to-list 'load-path "~/.emacs.d/gwt-mumamo")
-(autoload 'gwt-mumamo-mode "gwt-mumamo" "" t)
-(add-to-list 'auto-mode-alist '("\.java$" . gwt-mumamo-mode))
 
 ;; markdown-mode
 (require 'markdown-mode)
