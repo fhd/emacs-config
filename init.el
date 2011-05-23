@@ -30,7 +30,8 @@
   (setq indent-tabs-mode nil)
   (setq c-style "k&r")
   (setq c-basic-offset tab-width)
-  (flyspell-prog-mode))
+  (flyspell-prog-mode)
+  (highlight-80+-mode))
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 (defun my-c++-mode-hook ()
@@ -46,7 +47,8 @@
 (defun my-lisp-mode-hook ()
   (setq indent-tabs-mode nil)
   (flyspell-prog-mode)
-  (highlight-parentheses-mode))
+  (highlight-parentheses-mode)
+  (highlight-80+-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'clojure-mode-hook 'my-lisp-mode-hook)
@@ -56,17 +58,20 @@
   (setq indent-tabs-mode nil)
   (setq nxml-child-indent tab-width)
   (setq nxml-outline-child-indent tab-width)
-  (flyspell-mode t))
+  (flyspell-mode t)
+  (highlight-80+-mode))
 (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
 
 (defun my-css-mode-hook ()
   (setq tab-width 4)
-  (setq indent-tabs-mode nil))
+  (setq indent-tabs-mode nil)
+  (highlight-80+-mode))
 (add-hook 'css-mode-hook 'my-css-mode-hook)
 
 (defun my-js-mode-hook ()
   (setq tab-width 4)
-  (setq indent-tabs-mode nil))
+  (setq indent-tabs-mode nil)
+  (highlight-80+-mode))
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
 (defun my-latex-mode-hook ()
@@ -76,7 +81,8 @@
     (if (fboundp 'tex-pdf-mode)
         (tex-pdf-mode t)))
   (auto-fill-mode t)
-  (flyspell-mode t))
+  (flyspell-mode t)
+  (highlight-80+-mode))
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-hook)
 
 
@@ -136,6 +142,10 @@ If no region is defined, all words in the buffer are counted."
 ;; markdown-mode
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))
+
+;; jade-mode
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\.jade$" . jade-mode))
 
 ;; package.el
 (when
