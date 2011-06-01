@@ -133,6 +133,12 @@ If no region is defined, all words in the buffer are counted."
 
 ;; Packages
 
+;; package.el
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 ;; color-theme
@@ -147,8 +153,23 @@ If no region is defined, all words in the buffer are counted."
 (require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\.jade$" . jade-mode))
 
-;; package.el
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;; cedet
+(load-file "~/.emacs.d/site-lisp/cedet/common/cedet.el")
+(global-ede-mode t)
+(semantic-load-enable-code-helpers)
+(require 'semantic-ia)
+(require 'semantic-gcc)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
+            (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
+            (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
+            (local-set-key "\C-c=" 'semantic-decoration-include-visit)
+            (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+            (local-set-key "\C-cq" 'semantic-ia-show-doc)
+            (local-set-key "\C-cs" 'semantic-ia-show-summary)
+            (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
+            (local-set-key "\C-ct" 'eassist-switch-h-cpp)
+            (local-set-key "\C-xt" 'eassist-switch-h-cpp)
+            (local-set-key "\C-ce" 'eassist-list-methods)
+            (local-set-key "\C-c\C-r" 'semantic-symref)))
