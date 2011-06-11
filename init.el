@@ -158,6 +158,10 @@ If no region is defined, all words in the buffer are counted."
 (add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
 (add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
 
+;; actionscript-mode
+(require 'actionscript-mode)
+(add-to-list 'auto-mode-alist '("\.as$" . actionscript-mode))
+
 ;; cedet
 (load-file "~/.emacs.d/site-lisp/cedet/common/cedet.el")
 (global-ede-mode t)
