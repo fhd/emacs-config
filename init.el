@@ -17,7 +17,8 @@
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "xdg-open"))
 (server-start)
-
+(global-ede-mode t)
+(semantic-mode t)
 
 ;; Hooks
 
@@ -31,8 +32,9 @@
   (setq c-style "k&r")
   (setq c-basic-offset tab-width)
   (flyspell-prog-mode)
-  (highlight-80+-mode))
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+  (highlight-80+-mode)
+  (local-set-key [(control return)] 'semantic-complete-symbol)
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook))
 
 (defun my-c++-mode-hook ()
   (setq c-style "stroustrup"))
@@ -168,24 +170,3 @@ If no region is defined, all words in the buffer are counted."
 ;; actionscript-mode
 (require 'actionscript-mode)
 (add-to-list 'auto-mode-alist '("\.as$" . actionscript-mode))
-
-;; cedet
-(load-file "~/.emacs.d/site-lisp/cedet/common/cedet.el")
-(global-ede-mode t)
-(semantic-load-enable-code-helpers)
-(require 'semantic-ia)
-(require 'semantic-gcc)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
-            (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
-            (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
-            (local-set-key "\C-c=" 'semantic-decoration-include-visit)
-            (local-set-key "\C-cj" 'semantic-ia-fast-jump)
-            (local-set-key "\C-cq" 'semantic-ia-show-doc)
-            (local-set-key "\C-cs" 'semantic-ia-show-summary)
-            (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-            (local-set-key "\C-ct" 'eassist-switch-h-cpp)
-            (local-set-key "\C-xt" 'eassist-switch-h-cpp)
-            (local-set-key "\C-ce" 'eassist-list-methods)
-            (local-set-key "\C-c\C-r" 'semantic-symref)))
