@@ -62,6 +62,13 @@
   (highlight-80+-mode))
 (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
 
+(defun my-html-mode-hook ()
+  (setq sgml-basic-offset 4)
+  (setq indent-tabs-mode nil)
+  (flyspell-mode t)
+  (highlight-80+-mode))
+(add-hook 'html-mode-hook 'my-html-mode-hook)
+
 (defun my-css-mode-hook ()
   (setq tab-width 4)
   (setq indent-tabs-mode nil)
