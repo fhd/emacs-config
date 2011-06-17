@@ -19,6 +19,10 @@
 (server-start)
 (global-ede-mode t)
 (semantic-mode t)
+(if (string= system-type "darwin")
+    (progn
+      (setq mac-option-modifier 'none)
+      (setq mac-command-modifier 'meta)))
 
 ;; Hooks
 
