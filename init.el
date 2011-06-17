@@ -33,6 +33,7 @@
   (setq c-basic-offset tab-width)
   (flyspell-prog-mode)
   (highlight-80+-mode)
+  (subword-mode)
   (local-set-key [(control return)] 'semantic-complete-symbol)
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook))
 
@@ -43,7 +44,9 @@
 (defun my-java-mode-hook ()
   (setq c-style "java")
   (require 'java-mode-indent-annotations)
-  (java-mode-indent-annotations-setup))
+  (java-mode-indent-annotations-setup)
+  (subword-mode)
+  (local-set-key [(control return)] 'semantic-complete-symbol))
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
 (defun my-lisp-mode-hook ()
@@ -80,7 +83,8 @@
 (defun my-js-mode-hook ()
   (setq tab-width 4)
   (setq indent-tabs-mode nil)
-  (highlight-80+-mode))
+  (highlight-80+-mode)
+  (subword-mode))
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
 (defun my-latex-mode-hook ()
