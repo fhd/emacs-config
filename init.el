@@ -178,3 +178,10 @@ If no region is defined, all words in the buffer are counted."
 ;; actionscript-mode
 (require 'actionscript-mode)
 (add-to-list 'auto-mode-alist '("\.as$" . actionscript-mode))
+
+;; malabar-mode
+(setq malabar-dir "~/.emacs.d/site-lisp/malabar-1.4.0")
+(add-to-list 'load-path (concat malabar-dir "/lisp"))
+(require 'malabar-mode)
+(setq malabar-groovy-lib-dir (concat malabar-dir "/lib"))
+(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
