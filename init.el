@@ -49,7 +49,9 @@
   (setq c-style "java")
   (require 'java-mode-indent-annotations)
   (java-mode-indent-annotations-setup)
+  (indent-tabs-mode nil)
   (subword-mode)
+  (highlight-80+-mode)
   (local-set-key [(control return)] 'semantic-complete-symbol))
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
@@ -180,8 +182,8 @@ If no region is defined, all words in the buffer are counted."
 (add-to-list 'auto-mode-alist '("\.as$" . actionscript-mode))
 
 ;; malabar-mode
-(setq malabar-dir "~/.emacs.d/site-lisp/malabar-1.4.0")
-(add-to-list 'load-path (concat malabar-dir "/lisp"))
-(require 'malabar-mode)
-(setq malabar-groovy-lib-dir (concat malabar-dir "/lib"))
-(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
+;;(setq malabar-dir "~/.emacs.d/site-lisp/malabar-1.4.0")
+;;(add-to-list 'load-path (concat malabar-dir "/lisp"))
+;;(require 'malabar-mode)
+;;(setq malabar-groovy-lib-dir (concat malabar-dir "/lib"))
+;;(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
