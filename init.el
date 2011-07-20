@@ -101,6 +101,10 @@
   (highlight-80+-mode))
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-hook)
 
+(defun my-python-mode-hook ()
+  (flyspell-prog-mode)
+  (highlight-80+-mode))
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;; org-mode
 
