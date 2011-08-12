@@ -38,8 +38,8 @@
   (flyspell-prog-mode)
   (highlight-80+-mode)
   (subword-mode)
-  (local-set-key [(control return)] 'semantic-complete-symbol)
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook))
+  (local-set-key [(control return)] 'semantic-complete-symbol))
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 (defun my-c++-mode-hook ()
   (setq c-style "stroustrup"))
@@ -49,10 +49,7 @@
   (setq c-style "java")
   (require 'java-mode-indent-annotations)
   (java-mode-indent-annotations-setup)
-  (indent-tabs-mode nil)
-  (subword-mode)
-  (highlight-80+-mode)
-  (local-set-key [(control return)] 'semantic-complete-symbol))
+  (subword-mode))
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
 (defun my-lisp-mode-hook ()
@@ -104,6 +101,10 @@
   (highlight-80+-mode))
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-hook)
 
+(defun my-python-mode-hook ()
+  (flyspell-prog-mode)
+  (highlight-80+-mode))
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;; org-mode
 
