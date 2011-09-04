@@ -2,3 +2,9 @@ auto-save-list
 server
 elpa/archive-contents
 elpa/builtin-packages
+ede-projects.el
+semanticdb/
+session.*
+site-lisp/nxhtml/etc/schema/xhtml-loader.rnc
+srecode-map.el
+tramp
