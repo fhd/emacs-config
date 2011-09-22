@@ -194,3 +194,7 @@ If no region is defined, all words in the buffer are counted."
 
 ;; nxhtml
 (load "~/.emacs.d/site-lisp/nxhtml/autostart")
+
+;; puppet-mode
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
