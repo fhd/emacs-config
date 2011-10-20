@@ -17,8 +17,6 @@
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "xdg-open"))
 (server-start)
-(global-ede-mode t)
-(semantic-mode t)
 
 ;; Hooks
 
@@ -31,7 +29,6 @@
   (setq indent-tabs-mode nil)
   (setq c-style "k&r")
   (setq c-basic-offset tab-width)
-  (flyspell-prog-mode)
   (highlight-80+-mode)
   (subword-mode)
   (local-set-key [(control return)] 'semantic-complete-symbol))
@@ -50,7 +47,6 @@
 
 (defun my-lisp-mode-hook ()
   (setq indent-tabs-mode nil)
-  (flyspell-prog-mode)
   (highlight-parentheses-mode)
   (highlight-80+-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
@@ -62,14 +58,14 @@
   (setq indent-tabs-mode nil)
   (setq nxml-child-indent tab-width)
   (setq nxml-outline-child-indent tab-width)
-  (flyspell-mode t)
+  (flyspell-prog-mode)
   (highlight-80+-mode))
 (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
 
 (defun my-html-mode-hook ()
   (setq sgml-basic-offset 4)
   (setq indent-tabs-mode nil)
-  (flyspell-mode t)
+  (flyspell-prog-mode)
   (highlight-80+-mode))
 (add-hook 'html-mode-hook 'my-html-mode-hook)
 
@@ -98,7 +94,6 @@
 (add-hook 'LaTeX-mode-hook 'my-latex-mode-hook)
 
 (defun my-python-mode-hook ()
-  (flyspell-prog-mode)
   (highlight-80+-mode))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
