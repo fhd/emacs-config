@@ -49,6 +49,7 @@
 (defun my-lisp-mode-hook ()
   (setq indent-tabs-mode nil)
   (highlight-parentheses-mode)
+  (paredit-mode)
   (highlight-80+-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
