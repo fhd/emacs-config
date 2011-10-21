@@ -21,30 +21,28 @@
 
 ;; Hooks
 
-(defun my-text-mode-hook ()
-  (visual-line-mode t))
-(add-hook 'text-mode-hook 'my-text-mode-hook)
+(add-hook 'text-mode-hook
+          (lambda () (visual-line-mode t)))
 
-(defun my-c-mode-common-hook ()
-  (setq tab-width 4)
-  (setq indent-tabs-mode nil)
-  (setq c-style "k&r")
-  (setq c-basic-offset tab-width)
-  (highlight-80+-mode)
-  (subword-mode)
-  (local-set-key [(control return)] 'semantic-complete-symbol))
-(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (setq tab-width 4)
+            (setq indent-tabs-mode nil)
+            (setq c-style "k&r")
+            (setq c-basic-offset tab-width)
+            (highlight-80+-mode)
+            (subword-mode)
+            (local-set-key [(control return)] 'semantic-complete-symbol)))
 
-(defun my-c++-mode-hook ()
-  (setq c-style "stroustrup"))
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+(add-hook 'c++-mode-hook
+          (lambda () (setq c-style "stroustrup")))
 
-(defun my-java-mode-hook ()
-  (setq c-style "java")
-  (require 'java-mode-indent-annotations)
-  (java-mode-indent-annotations-setup)
-  (subword-mode))
-(add-hook 'java-mode-hook 'my-java-mode-hook)
+(add-hook 'java-mode-hook
+          (lambda ()
+            (setq c-style "java")
+            (require 'java-mode-indent-annotations)
+            (java-mode-indent-annotations-setup)
+            (subword-mode)))
 
 (defun my-lisp-mode-hook ()
   (setq indent-tabs-mode nil)
@@ -55,49 +53,48 @@
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'clojure-mode-hook 'my-lisp-mode-hook)
 
-(defun my-nxml-mode-hook ()
-  (setq tab-width 4)
-  (setq indent-tabs-mode nil)
-  (setq nxml-child-indent tab-width)
-  (setq nxml-outline-child-indent tab-width)
-  (flyspell-prog-mode)
-  (highlight-80+-mode))
-(add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (setq tab-width 4)
+            (setq indent-tabs-mode nil)
+            (setq nxml-child-indent tab-width)
+            (setq nxml-outline-child-indent tab-width)
+            (flyspell-prog-mode)
+            (highlight-80+-mode)))
 
-(defun my-html-mode-hook ()
-  (setq sgml-basic-offset 4)
-  (setq indent-tabs-mode nil)
-  (flyspell-prog-mode)
-  (highlight-80+-mode))
-(add-hook 'html-mode-hook 'my-html-mode-hook)
+(add-hook 'html-mode-hook
+          (lambda ()
+            (setq sgml-basic-offset 4)
+            (setq indent-tabs-mode nil)
+            (flyspell-prog-mode)
+            (highlight-80+-mode)))
 
-(defun my-css-mode-hook ()
-  (setq tab-width 4)
-  (setq indent-tabs-mode nil)
-  (highlight-80+-mode))
-(add-hook 'css-mode-hook 'my-css-mode-hook)
+(add-hook 'css-mode-hook
+          (lambda ()
+            (setq tab-width 4)
+            (setq indent-tabs-mode nil)
+            (highlight-80+-mode)))
 
-(defun my-js-mode-hook ()
-  (setq tab-width 4)
-  (setq indent-tabs-mode nil)
-  (highlight-80+-mode)
-  (subword-mode))
-(add-hook 'js-mode-hook 'my-js-mode-hook)
+(add-hook 'js-mode-hook
+          (lambda ()
+            (setq tab-width 4)
+            (setq indent-tabs-mode nil)
+            (highlight-80+-mode)
+            (subword-mode)))
 
-(defun my-latex-mode-hook ()
-  (add-to-list 'TeX-output-view-style '("^.*$" "." "xdg-open %o"))
-  (if (fboundp 'Tex-PDF-Mode)
-      (TeX-PDF-mode t)
-    (if (fboundp 'tex-pdf-mode)
-        (tex-pdf-mode t)))
-  (auto-fill-mode t)
-  (flyspell-mode t)
-  (highlight-80+-mode))
-(add-hook 'LaTeX-mode-hook 'my-latex-mode-hook)
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (add-to-list 'TeX-output-view-style '("^.*$" "." "xdg-open %o"))
+            (if (fboundp 'Tex-PDF-Mode)
+                (TeX-PDF-mode t)
+              (if (fboundp 'tex-pdf-mode)
+                  (tex-pdf-mode t)))
+            (auto-fill-mode t)
+            (flyspell-mode t)
+            (highlight-80+-mode)))
 
-(defun my-python-mode-hook ()
-  (highlight-80+-mode))
-(add-hook 'python-mode-hook 'my-python-mode-hook)
+(add-hook 'python-mode-hook
+          (lambda () highlight-80+-mode))
 
 ;; org-mode
 
