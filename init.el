@@ -30,6 +30,7 @@
             (setq indent-tabs-mode nil)
             (setq c-style "k&r")
             (setq c-basic-offset tab-width)
+            (flyspell-prog-mode)
             (highlight-80+-mode)
             (subword-mode)
             (local-set-key [(control return)] 'semantic-complete-symbol)))
@@ -48,6 +49,7 @@
   (setq indent-tabs-mode nil)
   (highlight-parentheses-mode)
   (paredit-mode)
+  (flyspell-prog-mode)
   (highlight-80+-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
@@ -73,12 +75,14 @@
           (lambda ()
             (setq tab-width 4)
             (setq indent-tabs-mode nil)
+            (flyspell-prog-mode)
             (highlight-80+-mode)))
 
 (add-hook 'js-mode-hook
           (lambda ()
             (setq tab-width 4)
             (setq indent-tabs-mode nil)
+            (flyspell-prog-mode)
             (highlight-80+-mode)
             (subword-mode)))
 
@@ -94,7 +98,9 @@
             (highlight-80+-mode)))
 
 (add-hook 'python-mode-hook
-          (lambda () highlight-80+-mode))
+          (lambda ()
+            (flyspell-prog-mode)
+            (highlight-80+-mode)))
 
 ;; org-mode
 
