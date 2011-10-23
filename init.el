@@ -14,6 +14,7 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (and window-system (string= system-type "gnu/linux"))
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "xdg-open"))
