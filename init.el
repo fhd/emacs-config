@@ -16,8 +16,10 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (and window-system (string= system-type "gnu/linux"))
-    (setq browse-url-browser-function 'browse-url-generic
-          browse-url-generic-program "xdg-open"))
+    (progn (setq browse-url-browser-function 'browse-url-generic
+		 browse-url-generic-program "xdg-open")
+	   (setq x-select-enable-clipboard t)))
+
 (server-start)
 
 ;; Hooks
