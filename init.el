@@ -57,6 +57,11 @@
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'clojure-mode-hook 'my-lisp-mode-hook)
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (setq safe-local-variable-values
+                  '((inferior-lisp-program . "lein repl")
+                    (inferior-lisp-program . "mvn clojure:repl")))))
 
 (add-hook 'nxml-mode-hook
           (lambda ()
