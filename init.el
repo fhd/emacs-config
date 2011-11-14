@@ -202,3 +202,6 @@ If no region is defined, all words in the buffer are counted."
 (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
+
+;; ruby-mode for Vagrantfile
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
