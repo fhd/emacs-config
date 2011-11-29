@@ -9,7 +9,6 @@
 (setq auto-save-list-file-name nil)
 (setq auto-save-default nil)
 (delete-selection-mode t)
-(setq ispell-dictionary "british")
 (setq-default truncate-lines t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -19,7 +18,6 @@
     (progn (setq browse-url-browser-function 'browse-url-generic
 		 browse-url-generic-program "xdg-open")
 	   (setq x-select-enable-clipboard t)))
-
 (server-start)
 
 ;; Hooks
@@ -109,6 +107,10 @@
           (lambda ()
             (flyspell-prog-mode)
             (highlight-80+-mode)))
+
+(add-hook 'flyspell-mode-hook
+          (lambda ()
+            (auto-dictionary-mode)))
 
 ;; org-mode
 
