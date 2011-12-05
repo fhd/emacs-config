@@ -62,7 +62,8 @@
           (lambda ()
             (setq safe-local-variable-values
                   '((inferior-lisp-program . "lein repl")
-                    (inferior-lisp-program . "mvn clojure:repl")))))
+                    (inferior-lisp-program . "mvn clojure:repl")
+                    (compile-command . "lein cljs compile-dev")))))
 
 (add-hook 'nxml-mode-hook
           (lambda ()
