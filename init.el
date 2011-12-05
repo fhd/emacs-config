@@ -19,6 +19,9 @@
 		 browse-url-generic-program "xdg-open")
 	   (setq x-select-enable-clipboard t)))
 (server-start)
+(if (string= system-type "darwin")
+    (setenv "PATH" (shell-command-to-string
+                    "source $HOME/.profile 2>/dev/null && echo $PATH")))
 
 ;; Hooks
 
