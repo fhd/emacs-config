@@ -57,6 +57,7 @@
   (highlight-80+-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
+
 (add-hook 'clojure-mode-hook 'my-lisp-mode-hook)
 (add-hook 'clojure-mode-hook
           (lambda ()
@@ -64,6 +65,12 @@
                   '((inferior-lisp-program . "lein repl")
                     (inferior-lisp-program . "smvn clojure:repl")
                     (compile-command . "lein cljs compile-dev")))))
+
+(add-hook 'scheme-mode-hook 'my-lisp-mode-hook)
+(add-hook 'scheme-mode-hook
+          (lambda ()
+            (setq safe-local-variable-values
+                  '((scheme-program-name . "schemejs")))))
 
 (add-hook 'nxml-mode-hook
           (lambda ()
