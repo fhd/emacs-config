@@ -12,6 +12,9 @@
 (put 'upcase-region 'disabled nil)
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(setq ansi-term-color-vector [unspecified
+                              "grey30" "red2" "spring green" "yellow2"
+                              "steel blue" "magenta2" "cyan2" "white"])
 
 (if (and window-system (string= system-type "gnu/linux"))
     (progn (setq browse-url-browser-function 'browse-url-generic
