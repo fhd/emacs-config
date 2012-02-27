@@ -15,6 +15,7 @@
 (setq ansi-term-color-vector [unspecified
                               "grey30" "red2" "spring green" "yellow2"
                               "steel blue" "magenta2" "cyan2" "white"])
+(global-auto-revert-mode t)
 
 (if (and window-system (string= system-type "gnu/linux"))
     (progn (setq browse-url-browser-function 'browse-url-generic
