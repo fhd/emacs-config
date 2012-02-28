@@ -49,4 +49,8 @@
 ;; ruby-mode for Vagrantfile
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
+;; mustache-mode
+(require 'mustache-mode)
+(add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
+
 (provide 'packages)
