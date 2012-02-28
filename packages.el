@@ -35,9 +35,6 @@
 ;; clojure-mode for clojurescript
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
-;; nxhtml
-(load (concat emacs-d "site-lisp/nxhtml/autostart"))
-
 ;; puppet-mode
 (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
