@@ -35,9 +35,6 @@
 ;; clojure-mode for clojurescript
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
-;; nxhtml
-(load (concat emacs-d "site-lisp/nxhtml/autostart"))
-
 ;; puppet-mode
 (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
@@ -51,5 +48,14 @@
 
 ;; ruby-mode for Vagrantfile
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+
+;; mustache-mode
+(require 'mustache-mode)
+(add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
+
+;; php-mode
+(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 (provide 'packages)
