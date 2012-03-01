@@ -100,4 +100,15 @@
                            (auto-fill-mode t)
                            (flyspell-mode t)))
 
+(add-hook 'groovy-mode-hook
+          (lambda ()
+            (subword-mode)
+            (flyspell-prog-mode)
+            (highlight-80+-mode)))
+
+(add-hook 'php-mode-hook
+          (lambda ()
+            (flyspell-prog-mode)
+            (highlight-80+-mode)))
+
 (provide 'hooks)
