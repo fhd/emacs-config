@@ -2,6 +2,7 @@
 (column-number-mode t)
 (show-paren-mode t)
 (transient-mark-mode t)
+(global-auto-revert-mode t)
 (setq frame-title-format '("%b - " invocation-name "@" system-name))
 (setq make-backup-files nil)
 (setq auto-save-list-file-name nil)
