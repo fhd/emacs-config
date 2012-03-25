@@ -11,8 +11,6 @@
 (setq-default truncate-lines t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (setq ansi-term-color-vector [unspecified
                               "grey30" "red2" "spring green" "yellow2"
                               "steel blue" "magenta2" "cyan2" "white"])
