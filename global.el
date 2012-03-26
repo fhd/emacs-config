@@ -2,6 +2,7 @@
 (column-number-mode t)
 (show-paren-mode t)
 (transient-mark-mode t)
+(global-auto-revert-mode t)
 (setq frame-title-format '("%b - " invocation-name "@" system-name))
 (setq make-backup-files nil)
 (setq auto-save-list-file-name nil)
@@ -10,8 +11,6 @@
 (setq-default truncate-lines t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (setq ansi-term-color-vector [unspecified
                               "grey30" "red2" "spring green" "yellow2"
                               "steel blue" "magenta2" "cyan2" "white"])

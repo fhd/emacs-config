@@ -8,3 +8,4 @@ session.*
 site-lisp/nxhtml/etc/schema/xhtml-loader.rnc
 srecode-map.el
 tramp
+*.elc
