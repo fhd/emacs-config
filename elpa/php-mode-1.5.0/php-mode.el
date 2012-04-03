@@ -4,11 +4,12 @@
 ;;               2008 Aaron S. Hawley
 
 ;; Maintainer: Aaron S. Hawley <ashawley at users.sourceforge.net>
-;; Author: Turadg Aleahmad, 1999-2004
+;; Author: Turadg Aleahmad
 ;; Keywords: php languages oop
 ;; Created: 1999-05-17
 ;; Modified: 2008-11-04
-;; X-URL:   http://php-mode.sourceforge.net/
+;; Version: 1.5.0
+;; X-URL: http://php-mode.sourceforge.net/
 
 (defconst php-mode-version-number "1.5.0"
   "PHP Mode version number.")
@@ -109,6 +110,7 @@
 (require 'etags)
 (eval-when-compile
   (require 'regexp-opt))
+
 ;; Local variables
 (defgroup php nil
   "Major mode `php-mode' for editing PHP code."
@@ -206,6 +208,7 @@ You can replace \"en\" with your ISO language code."
 Turning this on will force PEAR rules on all PHP files."
   :type 'boolean
   :group 'php)
+
 (defconst php-mode-modified "2008-11-04"
   "PHP Mode build date.")
 
@@ -214,6 +217,7 @@ Turning this on will force PEAR rules on all PHP files."
   (interactive)
   (message "PHP mode %s of %s"
            php-mode-version-number php-mode-modified))
+
 (defconst php-beginning-of-defun-regexp
   "^\\s-*\\(?:\\(?:abstract\\|final\\|private\\|protected\\|public\\|static\\)\\s-+\\)*function\\s-+&?\\(\\(?:\\sw\\|\\s_\\)+\\)\\s-*("
   "Regular expression for a PHP function.")
@@ -245,6 +249,8 @@ Implements PHP befsion of `end-of-defun-function'
 See `php-beginning-of-defun'."
   (interactive "p")
   (php-beginning-of-defun (- (or arg 1))))
+
+
 (defvar php-warned-bad-indent nil)
 (make-variable-buffer-local 'php-warned-bad-indent)
 
@@ -273,6 +279,7 @@ See `php-beginning-of-defun'."
   (if (or php-warned-bad-indent
           (php-check-html-for-indentation))
       (funcall 'c-indent-line)))
+
 (defconst php-tags '("<?php" "?>" "<?" "<?="))
 (defconst php-tags-key (regexp-opt php-tags))
 
@@ -309,7 +316,7 @@ See `php-beginning-of-defun'."
   (set (make-local-variable 'c-opt-cpp-prefix) php-tags-key)
 
   (c-set-offset 'cpp-macro 0)
-  
+
 ;;   (c-lang-defconst c-block-stmt-1-kwds php php-block-stmt-1-kwds)
 ;;   (c-lang-defvar c-block-stmt-1-kwds (c-lang-const c-block-stmt-1-kwds))
   (set (make-local-variable 'c-block-stmt-1-key) php-block-stmt-1-key)
@@ -386,6 +393,7 @@ See `php-beginning-of-defun'."
        php-beginning-of-defun-regexp)
 
   (run-hooks 'php-mode-hook))
+
 ;; Make a menu keymap (with a prompt string)
 ;; and make it the menu bar item's definition.
 (define-key php-mode-map [menu-bar] (make-sparse-keymap))
@@ -401,6 +409,7 @@ See `php-beginning-of-defun'."
 (define-key php-mode-map
   [menu-bar php search-documentation]
   '("Search documentation" . php-search-documentation))
+
 ;; Define function name completion function
 (defvar php-completion-table nil
   "Obarray of tag names defined in current tags table and functions known to PHP.")
@@ -531,6 +540,7 @@ current `tags-file-name'."
     (if arglist
         (message "Arglist for %s: %s" tagname arglist)
         (message "Unknown function: %s" tagname))))
+
 ;; Define function documentation function
 (defun php-search-documentation ()
   "Search PHP documentation for the word at point."
@@ -562,6 +572,7 @@ current `tags-file-name'."
 (define-key php-mode-map
   '[(control .)]
   'php-show-arglist)
+
 (defconst php-constants
   (eval-when-compile
     (regexp-opt
@@ -956,6 +967,7 @@ current `tags-file-name'."
     (regexp-opt '("_GET" "_POST" "_COOKIE" "_SESSION" "_ENV" "GLOBALS"
                   "_SERVER" "_FILES" "_REQUEST")))
   "PHP superglobal variables.")
+
 ;; Set up font locking
 (defconst php-font-lock-keywords-1
   (list

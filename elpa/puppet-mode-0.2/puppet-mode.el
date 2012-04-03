@@ -1,9 +1,10 @@
-;;;
-;;; puppet-mode.el
-;;;
-;;; Author: lutter
-;;; Author: Russ Allbery <rra@stanford.edu>
-;;;
+;;; puppet-mode.el --- A simple mode for editing puppet manifests
+
+;; Copyright (C) 2011 Puppet Labs Inc
+
+;;; Author: Russ Allbery <rra@stanford.edu>, lutter
+;;; URL: https://github.com/puppetlabs/puppet-syntax-emacs
+;;; Version: 0.2
 ;;; Description: A simple mode for editing puppet manifests
 
 (defconst puppet-mode-version "0.2")
@@ -344,8 +345,8 @@ The variable puppet-indent-level controls the amount of indentation.
   (set (make-local-variable 'indent-tabs-mode) puppet-indent-tabs-mode)
   (set (make-local-variable 'require-final-newline) t)
   (set (make-local-variable 'paragraph-ignore-fill-prefix) t)
-  (set (make-local-variable 'paragraph-start) "\f\\|[ 	]*$\\|#$")
-  (set (make-local-variable 'paragraph-separate) "\\([ 	\f]*\\|#\\)$")
+  (set (make-local-variable 'paragraph-start) "\f\\|[   ]*$\\|#$")
+  (set (make-local-variable 'paragraph-separate) "\\([          \f]*\\|#\\)$")
   (or (boundp 'font-lock-variable-name-face)
       (setq font-lock-variable-name-face font-lock-type-face))
   (set (make-local-variable 'font-lock-keywords) puppet-font-lock-keywords)
@@ -357,3 +358,5 @@ The variable puppet-indent-level controls the amount of indentation.
   (run-hooks 'puppet-mode-hook))
 
 (provide 'puppet-mode)
+
+;;; puppet-mode.el ends here

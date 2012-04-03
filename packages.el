@@ -17,11 +17,12 @@
 (color-theme-charcoal-black)
 
 ;; markdown-mode
-(require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))
 
 ;; jade-mode
+(require 'sws-mode)
 (require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\.jade$" . jade-mode))
 
 ;; groovy-mode
@@ -37,11 +38,9 @@
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
 ;; puppet-mode
-(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
 ;; vala-mode
-(autoload 'vala-mode "vala-mode" "Major mode for editing Vala code." t)
 (add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
@@ -51,11 +50,9 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ;; mustache-mode
-(require 'mustache-mode)
 (add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
 
 ;; php-mode
-(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 

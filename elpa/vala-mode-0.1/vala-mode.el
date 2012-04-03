@@ -1,11 +1,10 @@
 ;;; vala-mode.el --- Vala mode derived mode
 
 ;; Author:     2005 Dylan R. E. Moonfire
-;;	       2008 Ã‰tienne BERSAC
-;; Maintainer: Ã‰tienne BERSAC <bersace03@laposte.net>
-;; Modifier:   Kentaro NAKAZAWA <kentaro.nakazawa@nifty.com>
+;;	       2008 Étienne BERSAC
+;; Maintainer: Étienne BERSAC <bersace03@laposte.net>
 ;; Created:    2008 May the 4th
-;; Modified:   April 2011
+;; Modified:   May 2008
 ;; Version:    0.1
 ;; Keywords:   vala languages oop
 
@@ -195,9 +194,9 @@
 (c-lang-defconst c-operators
   vala `((prefix "base")))
 
-;; Vala directives
-(c-lang-defconst c-opt-cpp-prefix
-  vala "\\s *#\\s *")
+;; Vala directives ?
+;; (c-lang-defconst c-opt-cpp-prefix
+;;   csharp "^\\s *#.*")
 
 
 ;; Vala uses the following assignment operators
@@ -207,9 +206,7 @@
 
 ;; This defines the primative types for Vala
 (c-lang-defconst c-primitive-type-kwds
-  vala '("void" "bool" "char" "uchar" "short" "ushort" "int" "uint" "long" "ulong"
-	 "size_t" "ssize_t" "int8" "uint8" "int16" "uint16" "int32" "uint32" "int64" "uint64"
-	 "unichar" "float" "double" "string"))
+  vala '("void" "char" "int" "float" "double" "string"))
 
 ;; The keywords that define that the following is a type, such as a
 ;; class definition.
@@ -230,7 +227,7 @@
   vala '("public" "partial" "private" "const" "abstract"
 	 "protected" "ref" "in" "out" "static" "virtual"
 	 "override" "params" "internal" "weak" "owned"
-	 "unowned" "async" "yield"))
+	 "unowned"))
 
 ;; We don't use the protection level stuff because it breaks the
 ;; method indenting. Not sure why, though.
@@ -280,7 +277,7 @@
 ;; We need to treat namespace as an outer block to class indenting
 ;; works properly.
 (c-lang-defconst c-other-block-decl-kwds
-  vala '("namespace" "extern"))
+  vala '("namespace"))
 
 ;; We need to include the "in" for the foreach
 (c-lang-defconst c-other-kwds
@@ -292,9 +289,9 @@
   vala 'c-awk-at-vsemi-p)
 
 
-;; (defcustom vala-font-lock-extra-types nil
-;;   "*List of extra types (aside from the type keywords) to recognize in Vala mode.
-;; Each list item should be a regexp matching a single identifier.")
+(defcustom vala-font-lock-extra-types nil
+  "*List of extra types (aside from the type keywords) to recognize in Vala mode.
+Each list item should be a regexp matching a single identifier.")
 
 (defconst vala-font-lock-keywords-1 (c-lang-const c-matchers-1 vala)
   "Minimal highlighting for Vala mode.")
