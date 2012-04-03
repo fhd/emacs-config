@@ -1,9 +1,10 @@
 (add-to-list 'load-path (concat emacs-d "site-lisp"))
 
-(when
-    (load
-     (expand-file-name (concat emacs-d "elpa/package.el")))
-  (package-initialize))
+;; package.el
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives '("marmalade" .
+                                 "http://marmalade-repo.org/packages/"))
 
 ;; org-mode
 (setq org-directory "~/org/")
