@@ -1,4 +1,6 @@
 (setq inhibit-splash-screen t)
+(tool-bar-mode t)
+(menu-bar-mode t)
 (column-number-mode t)
 (show-paren-mode t)
 (transient-mark-mode t)
