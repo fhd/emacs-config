@@ -1758,41 +1758,103 @@ nil."
          (list (cons 'c js-comment-lineup-func))))
     (c-get-syntactic-indentation (list (cons symbol anchor)))))
 
+(defconst js-possibly-braceless-keywords-re
+  (concat "else[ \t]+if\\|for[ \t]+each\\|"
+          (regexp-opt '("catch" "do" "else" "finally" "for" "if"
+                        "try" "while" "with" "let")))
+  "Regular expression matching keywords that are optionally
+followed by an opening brace.")
+
+(defconst js-indent-operator-re
+  (concat "[-+*/%<>=&^|?:.]\\([^-+*/]\\|$\\)\\|"
+          (regexp-opt '("in" "instanceof") 'words))
+  "Regular expression matching operators that affect indentation
+of continued expressions.")
+
+(defconst js-declaration-keyword-re
+  (regexp-opt '("var" "let" "const") 'words)
+  "Regular expression matching variable declaration keywords.")
+
+(defun js2-backward-sws ()
+  "Move backward through whitespace and comments."
+  (interactive)
+  (while (forward-comment -1)))
+
+(defsubst js2-same-line (pos)
+  "Return t if POS is on the same line as current point."
+  (and (>= pos (point-at-bol))
+       (<= pos (point-at-eol))))
+
+(defun js-multiline-decl-indentation ()
+  "Returns the declaration indentation column if the current line belongs
+to a multiline declaration statement.  All declarations are lined up vertically:
+
+var a = 10,
+    b = 20,
+    c = 30;
+"
+  (let (forward-sexp-function ; use lisp version
+        at-opening-bracket)
+    (save-excursion
+      (back-to-indentation)
+      (when (not (looking-at js-declaration-keyword-re))
+        (when (looking-at js-indent-operator-re)
+          (goto-char (match-end 0))) ; continued expressions are ok
+        (while (and (not at-opening-bracket)
+                    (not (bobp))
+                    (let ((pos (point)))
+                      (save-excursion
+                        (js2-backward-sws)
+                        (or (eq (char-before) ?,)
+                            (and (not (eq (char-before) ?\;))
+                                 (and
+                                  (prog2 (skip-chars-backward "[[:punct:]]")
+                                      (looking-at js-indent-operator-re)
+                                    (js2-backward-sws))
+                                  (not (eq (char-before) ?\;))))
+                            (js2-same-line pos)))))
+          (condition-case err
+              (backward-sexp)
+            (scan-error (setq at-opening-bracket t))))
+        (when (looking-at js-declaration-keyword-re)
+          (- (1+ (match-end 0)) (point-at-bol)))))))
+
 (defun js--proper-indentation (parse-status)
   "Return the proper indentation for the current line."
   (save-excursion
-    (back-to-indentation)
-    (cond ((nth 4 parse-status)
-           (js--get-c-offset 'c (nth 8 parse-status)))
-          ((nth 8 parse-status) 0) ; inside string
-          ((js--ctrl-statement-indentation))
-          ((eq (char-after) ?#) 0)
-          ((save-excursion (js--beginning-of-macro)) 4)
-          ((nth 1 parse-status)
-           (let ((same-indent-p (looking-at
-                                 "[]})]\\|\\_<case\\_>\\|\\_<default\\_>"))
-                 (continued-expr-p (js--continued-expression-p)))
-             (goto-char (nth 1 parse-status))
-             (if (looking-at "[({[]\\s-*\\(/[/*]\\|$\\)")
-                 (progn
-                   (skip-syntax-backward " ")
-		   (when (eq (char-before) ?\)) (backward-list))
-                   (back-to-indentation)
-                   (cond (same-indent-p
-                          (current-column))
-                         (continued-expr-p
-                          (+ (current-column) (* 2 js-indent-level)
-                             js-expr-indent-offset))
-                         (t
-                          (+ (current-column) js-indent-level))))
-               (unless same-indent-p
-                 (forward-char)
-                 (skip-chars-forward " \t"))
-               (current-column))))
+    (or (js-multiline-decl-indentation)
+        (back-to-indentation)
+        (cond ((nth 4 parse-status)
+               (js--get-c-offset 'c (nth 8 parse-status)))
+              ((nth 8 parse-status) 0) ; inside string
+              ((js--ctrl-statement-indentation))
+              ((eq (char-after) ?#) 0)
+              ((save-excursion (js--beginning-of-macro)) 4)
+              ((nth 1 parse-status)
+               (let ((same-indent-p (looking-at
+                                     "[]})]\\|\\_<case\\_>\\|\\_<default\\_>"))
+                     (continued-expr-p (js--continued-expression-p)))
+                 (goto-char (nth 1 parse-status))
+                 (if (looking-at "[({[]\\s-*\\(/[/*]\\|$\\)")
+                     (progn
+                       (skip-syntax-backward " ")
+                       (when (eq (char-before) ?\)) (backward-list))
+                       (back-to-indentation)
+                       (cond (same-indent-p
+                              (current-column))
+                             (continued-expr-p
+                              (+ (current-column) (* 2 js-indent-level)
+                                 js-expr-indent-offset))
+                             (t
+                              (+ (current-column) js-indent-level))))
+                   (unless same-indent-p
+                     (forward-char)
+                     (skip-chars-forward " \t"))
+                   (current-column))))
 
-          ((js--continued-expression-p)
-           (+ js-indent-level js-expr-indent-offset))
-          (t 0))))
+              ((js--continued-expression-p)
+               (+ js-indent-level js-expr-indent-offset))
+              (t 0)))))
 
 (defun js-indent-line ()
   "Indent the current line as JavaScript."
