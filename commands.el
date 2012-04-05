@@ -29,4 +29,28 @@ If no region is defined, all words in the buffer are counted."
         (e (if mark-active end (point-max))))
     (message "Word count: %s" (how-many "\\w+" b e))))
 
+(defun restart-emacs ()
+  "Restart Emacs."
+  (interactive)
+  (add-hook 'kill-emacs-hook
+            (lambda ()
+              (server-force-delete)
+              (call-process (locate-file invocation-name
+                                         (list invocation-directory))
+                            nil 0)))
+  ;; Not using save-buffers-kill-emacs because that could be aborted,
+  ;; and the kill-emacs-hook would still be there.
+  (save-some-buffers)
+  (kill-emacs))
+
+(defun update-emacs-config ()
+  "Update Emacs configuration."
+  (interactive)
+  (cd emacs-d)
+  (if (not (= (shell-command "git pull | grep \"Already up-to-date.\"") 0))
+      (progn
+        (if (y-or-n-p "Configuration updated. Do you want to restart Emacs? ")
+            (restart-emacs)))
+    (message "Configuration already up-to-date.")))
+
 (provide 'commands)
