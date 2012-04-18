@@ -74,7 +74,15 @@
             (setq indent-tabs-mode nil)
             (flyspell-prog-mode)
             (highlight-80+-mode)
-            (subword-mode)))
+            (subword-mode)
+            (setq inferior-js-program-command "node")
+            (ansi-color-for-comint-mode-on)
+            (add-to-list 'comint-preoutput-filter-functions
+                         (lambda (output)
+                           (replace-regexp-in-string
+                            ".*1G\.\.\..*5G" "... "
+                            (replace-regexp-in-string
+                             ".*1G.*3G" "> " output))))))
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()
