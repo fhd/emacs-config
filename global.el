@@ -1,6 +1,4 @@
 (setq inhibit-splash-screen t)
-(tool-bar-mode t)
-(menu-bar-mode t)
 (column-number-mode t)
 (show-paren-mode t)
 (transient-mark-mode t)
@@ -17,10 +15,13 @@
                               "grey30" "red2" "spring green" "yellow2"
                               "steel blue" "magenta2" "cyan2" "white"])
 
-(if (and window-system (string= system-type "gnu/linux"))
-    (progn (setq browse-url-browser-function 'browse-url-generic
-		 browse-url-generic-program "xdg-open")
-	   (setq x-select-enable-clipboard t)))
+(when window-system
+  (tool-bar-mode t)
+  (menu-bar-mode t)
+  (if (string= system-type "gnu/linux")
+    (setq browse-url-browser-function 'browse-url-generic
+	  browse-url-generic-program "xdg-open"
+	  x-select-enable-clipboard t)))
 
 (if (string= system-type "darwin")
     (setenv "PATH" (shell-command-to-string
