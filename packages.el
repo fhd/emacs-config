@@ -50,6 +50,9 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ;; mustache-mode
+(require 'mustache-mode)
+(setq tpl-basic-offset 4)
+(defalias 'mustache-mode 'tpl-mode)
 (add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
 
 ;; php-mode
