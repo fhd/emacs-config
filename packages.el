@@ -62,4 +62,8 @@
 ;; css-mode for .qss
 (add-to-list 'auto-mode-alist '("\\.qss$" . css-mode))
 
+;; c-header-guess-mode for .h files
+(require 'c-header-guess-mode)
+(add-to-list 'auto-mode-alist '("\\.h$" . c-header-guess-mode))
+
 (provide 'packages)
