@@ -1,5 +1,6 @@
-(defvar c-header-guess-c++-extensions '("cpp" "cc" "cxx"))
-(defvar c-header-guess-objc-extensions '("m" "mm"))
+(defvar c-header-guess-extension-mode-alist
+  '((c++-mode ("cpp" "cxx" "cc"))
+    (objc-mode ("m" "mm"))))
 
 (defun c-header-guess-files-exist (basename extensions)
   (loop for extension in extensions
@@ -7,12 +8,10 @@
         return t))
 
 (defun c-header-guess-mode-for-basename (basename)
-  (cond
-   ((c-header-guess-files-exist basename c-header-guess-c++-extensions)
-    'c++-mode)
-   ((c-header-guess-files-exist basename c-header-guess-objc-extensions)
-    'obcj-mode)
-   ('c-mode)))
+  (or (loop for mode-extensions in c-header-guess-extension-mode-alist
+            if (c-header-guess-files-exist basename (cadr mode-extensions))
+            return (car mode-extensions))
+      'c-mode))
 
 ;;;###autoload
 (defun c-header-guess-mode ()
