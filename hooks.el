@@ -120,7 +120,10 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
+            (flyspell-prog-mode)
+            (highlight-80+-mode)
             (rvm-activate-corresponding-ruby)
-            (inf-ruby-keys)))
+            (inf-ruby-keys)
+            (setq ruby-deep-indent-paren nil)))
 
 (provide 'hooks)
