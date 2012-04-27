@@ -119,4 +119,9 @@
             (flyspell-prog-mode)
             (highlight-80+-mode)))
 
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (rvm-activate-corresponding-ruby)
+            (inf-ruby-keys)))
+
 (provide 'hooks)
