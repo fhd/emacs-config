@@ -81,7 +81,9 @@
                            (replace-regexp-in-string
                             ".*1G\.\.\..*5G" "... "
                             (replace-regexp-in-string
-                             ".*1G.*3G" "> " output))))))
+                             ".*1G.*3G" "> " output))))
+            (setq safe-local-variable-values
+                  '((js-indent-level . 2)))))
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()
