@@ -418,6 +418,16 @@ Match group 1 is the name of the macro.")
    :paren-depth most-negative-fixnum
    :type 'toplevel))
 
+(defconst js--indent-operator-re
+  (concat "[-+*/%<>=&^|?:.]\\([^-+*/]\\|$\\)\\|"
+          (regexp-opt '("in" "instanceof") 'words))
+  "Regular expression matching operators that affect indentation
+of continued expressions.")
+
+(defconst js--declaration-keyword-re
+  (regexp-opt '("var" "let" "const") 'words)
+  "Regular expression matching variable declaration keywords.")
+
 ;;; User Customization
 
 (defgroup js nil
@@ -1758,33 +1768,6 @@ nil."
          (list (cons 'c js-comment-lineup-func))))
     (c-get-syntactic-indentation (list (cons symbol anchor)))))
 
-(defconst js-possibly-braceless-keywords-re
-  (concat "else[ \t]+if\\|for[ \t]+each\\|"
-          (regexp-opt '("catch" "do" "else" "finally" "for" "if"
-                        "try" "while" "with" "let")))
-  "Regular expression matching keywords that are optionally
-followed by an opening brace.")
-
-(defconst js-indent-operator-re
-  (concat "[-+*/%<>=&^|?:.]\\([^-+*/]\\|$\\)\\|"
-          (regexp-opt '("in" "instanceof") 'words))
-  "Regular expression matching operators that affect indentation
-of continued expressions.")
-
-(defconst js-declaration-keyword-re
-  (regexp-opt '("var" "let" "const") 'words)
-  "Regular expression matching variable declaration keywords.")
-
-(defun js2-backward-sws ()
-  "Move backward through whitespace and comments."
-  (interactive)
-  (while (forward-comment -1)))
-
-(defsubst js2-same-line (pos)
-  "Return t if POS is on the same line as current point."
-  (and (>= pos (point-at-bol))
-       (<= pos (point-at-eol))))
-
 (defun js-multiline-decl-indentation ()
   "Returns the declaration indentation column if the current line belongs
 to a multiline declaration statement.  All declarations are lined up vertically:
@@ -1793,30 +1776,31 @@ var a = 10,
     b = 20,
     c = 30;
 "
-  (let (forward-sexp-function ; use lisp version
-        at-opening-bracket)
+  (let (at-opening-bracket)
     (save-excursion
       (back-to-indentation)
-      (when (not (looking-at js-declaration-keyword-re))
-        (when (looking-at js-indent-operator-re)
-          (goto-char (match-end 0))) ; continued expressions are ok
+      (when (not (looking-at js--declaration-keyword-re))
+        (when (looking-at js--indent-operator-re)
+          (goto-char (match-end 0)))
         (while (and (not at-opening-bracket)
                     (not (bobp))
                     (let ((pos (point)))
                       (save-excursion
-                        (js2-backward-sws)
+                        (js--backward-syntactic-ws)
                         (or (eq (char-before) ?,)
                             (and (not (eq (char-before) ?\;))
                                  (and
-                                  (prog2 (skip-chars-backward "[[:punct:]]")
-                                      (looking-at js-indent-operator-re)
-                                    (js2-backward-sws))
+                                  (prog2
+                                      (skip-chars-backward "[[:punct:]]")
+                                      (looking-at js--indent-operator-re)
+                                    (js--backward-syntactic-ws))
                                   (not (eq (char-before) ?\;))))
-                            (js2-same-line pos)))))
+                            (and (>= pos (point-at-bol))
+                                 (<= pos (point-at-eol)))))))
           (condition-case err
               (backward-sexp)
             (scan-error (setq at-opening-bracket t))))
-        (when (looking-at js-declaration-keyword-re)
+        (when (looking-at js--declaration-keyword-re)
           (- (1+ (match-end 0)) (point-at-bol)))))))
 
 (defun js--proper-indentation (parse-status)
