@@ -67,4 +67,9 @@
 (require 'c-header-guess-mode)
 (add-to-list 'auto-mode-alist '("\\.h$" . c-header-guess-mode))
 
+;; cmake-mode
+(require 'cmake-mode)
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt$" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake$" . cmake-mode))
+
 (provide 'packages)
