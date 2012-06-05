@@ -72,4 +72,7 @@
 (add-to-list 'auto-mode-alist '("CMakeLists\\.txt$" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake$" . cmake-mode))
 
+;; objc-mode for .mm
+(add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
+
 (provide 'packages)
