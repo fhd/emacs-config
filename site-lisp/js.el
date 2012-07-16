@@ -1796,7 +1796,7 @@ statement spanning multiple lines; otherwise, return nil."
               (backward-sexp)
             (scan-error (setq at-opening-bracket t))))
         (when (looking-at js--declaration-keyword-re)
-          (- (1+ (match-end 0)) (point-at-bol)))))))
+          (+ (current-indentation) js-indent-level))))))
 
 (defun js--proper-indentation (parse-status)
   "Return the proper indentation for the current line."
