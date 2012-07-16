@@ -16,7 +16,7 @@
                               "steel blue" "magenta2" "cyan2" "white"])
 
 (when window-system
-  (tool-bar-mode t)
+  (tool-bar-mode -1)
   (menu-bar-mode t)
   (if (string= system-type "gnu/linux")
     (setq browse-url-browser-function 'browse-url-generic
