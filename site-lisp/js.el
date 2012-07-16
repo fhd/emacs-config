@@ -1785,12 +1785,11 @@ declaration statement; otherwise, return nil."
                         (js--backward-syntactic-ws)
                         (or (eq (char-before) ?,)
                             (and (not (eq (char-before) ?\;))
-                                 (and
-                                  (prog2
-                                      (skip-chars-backward "[[:punct:]]")
-                                      (looking-at js--indent-operator-re)
-                                    (js--backward-syntactic-ws))
-                                  (not (eq (char-before) ?\;))))
+                                 (prog2
+                                     (skip-chars-backward "[[:punct:]]")
+                                     (looking-at js--indent-operator-re)
+                                   (js--backward-syntactic-ws))
+                                 (not (eq (char-before) ?\;)))
                             (and (>= pos (point-at-bol))
                                  (<= pos (point-at-eol)))))))
           (condition-case err
