@@ -1769,13 +1769,9 @@ nil."
     (c-get-syntactic-indentation (list (cons symbol anchor)))))
 
 (defun js--multiline-decl-indentation ()
-  "Returns the declaration indentation column if the current line belongs
-to a multiline declaration statement.  All declarations are lined up vertically:
-
-var a = 10,
-    b = 20,
-    c = 30;
-"
+  "Helper function for `js--proper-indentation'.
+Return the proper indentation of the current line if it belongs to a multiline
+declaration statement; otherwise, return nil."
   (let (at-opening-bracket)
     (save-excursion
       (back-to-indentation)
