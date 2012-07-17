@@ -418,16 +418,6 @@ Match group 1 is the name of the macro.")
    :paren-depth most-negative-fixnum
    :type 'toplevel))
 
-(defconst js--indent-operator-re
-  (concat "[-+*/%<>=&^|?:.]\\([^-+*/]\\|$\\)\\|"
-          (regexp-opt '("in" "instanceof") 'words))
-  "Regular expression matching operators that affect indentation
-of continued expressions.")
-
-(defconst js--declaration-keyword-re
-  (regexp-opt '("var" "let" "const") 'words)
-  "Regular expression matching variable declaration keywords.")
-
 ;;; User Customization
 
 (defgroup js nil
@@ -1683,6 +1673,10 @@ See `font-lock-keywords'.")
    '("catch" "do" "else" "finally" "for" "if" "try" "while" "with"
      "each"))
   "Regexp matching keywords optionally followed by an opening brace.")
+
+(defconst js--declaration-keyword-re
+  (regexp-opt '("var" "let" "const") 'words)
+  "Regular expression matching variable declaration keywords.")
 
 (defconst js--indent-operator-re
   (concat "[-+*/%<>=&^|?:.]\\([^-+*/]\\|$\\)\\|"
