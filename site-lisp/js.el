@@ -1768,7 +1768,7 @@ nil."
          (list (cons 'c js-comment-lineup-func))))
     (c-get-syntactic-indentation (list (cons symbol anchor)))))
 
-(defun js--multiline-declaration-indentation ()
+(defun js--multi-line-declaration-indentation ()
   "Helper function for `js--proper-indentation'.
 Return the proper indentation of the current line if it belongs to a declaration
 statement spanning multiple lines; otherwise, return nil."
@@ -1806,7 +1806,7 @@ statement spanning multiple lines; otherwise, return nil."
            (js--get-c-offset 'c (nth 8 parse-status)))
           ((nth 8 parse-status) 0) ; inside string
           ((js--ctrl-statement-indentation))
-          ((js--multiline-declaration-indentation))
+          ((js--multi-line-declaration-indentation))
           ((eq (char-after) ?#) 0)
           ((save-excursion (js--beginning-of-macro)) 4)
           ((nth 1 parse-status)
