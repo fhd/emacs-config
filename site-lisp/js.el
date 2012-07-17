@@ -1804,7 +1804,7 @@ statement spanning multiple lines; otherwise, return nil."
     (back-to-indentation)
     (cond ((nth 4 parse-status)
            (js--get-c-offset 'c (nth 8 parse-status)))
-          ((nth 8 parse-status) 0)      ; inside string
+          ((nth 8 parse-status) 0) ; inside string
           ((js--ctrl-statement-indentation))
           ((js--multiline-declaration-indentation))
           ((eq (char-after) ?#) 0)
@@ -1817,7 +1817,7 @@ statement spanning multiple lines; otherwise, return nil."
              (if (looking-at "[({[]\\s-*\\(/[/*]\\|$\\)")
                  (progn
                    (skip-syntax-backward " ")
-                   (when (eq (char-before) ?\)) (backward-list))
+		   (when (eq (char-before) ?\)) (backward-list))
                    (back-to-indentation)
                    (cond (same-indent-p
                           (current-column))
