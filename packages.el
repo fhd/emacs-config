@@ -30,6 +30,9 @@
 (add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
 (add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
 
+;; groovy-mode for .gradle files
+(add-to-list 'auto-mode-alist '("\.gradle$" . groovy-mode))
+
 ;; actionscript-mode
 (require 'actionscript-mode)
 (add-to-list 'auto-mode-alist '("\.as$" . actionscript-mode))
