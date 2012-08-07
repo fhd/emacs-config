@@ -27,4 +27,9 @@
     (setenv "PATH" (shell-command-to-string
                     "source $HOME/.profile 2>/dev/null && echo $PATH")))
 
+(defvar my-term-shell "bash")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+
 (provide 'global)
