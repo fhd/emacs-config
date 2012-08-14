@@ -13,8 +13,9 @@
 (global-set-key "\C-cl" 'org-store-link)
 
 ;; color-theme
-(require 'color-theme)
-(color-theme-charcoal-black)
+(when (< emacs-major-version 24)
+  (require 'color-theme)
+  (color-theme-charcoal-black))
 
 ;; markdown-mode
 (add-to-list 'auto-mode-alist '("\.md$" . markdown-mode))

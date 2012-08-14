@@ -11,6 +11,9 @@
 (setq-default truncate-lines t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(if (>= emacs-major-version 24)
+    (load-theme 'wombat t))
+(setq custom-enabled-themes '(wombat))
 (setq ansi-term-color-vector [unspecified
                               "grey30" "red2" "spring green" "yellow2"
                               "steel blue" "magenta2" "cyan2" "white"])
