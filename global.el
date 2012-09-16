@@ -9,6 +9,7 @@
 (setq auto-save-default nil)
 (delete-selection-mode t)
 (setq-default truncate-lines t)
+(setq-default show-trailing-whitespaces t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (if (>= emacs-major-version 24)
