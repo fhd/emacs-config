@@ -99,7 +99,9 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (flyspell-prog-mode)
-            (highlight-80+-mode)))
+            (highlight-80+-mode)
+            (setq safe-local-variable-values
+                  '((python-indent . 2)))))
 
 (add-hook 'flyspell-mode-hook
           (lambda ()
