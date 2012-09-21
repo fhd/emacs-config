@@ -1,14 +1,18 @@
+(defun prog-common-hook ()
+  (flyspell-prog-mode)
+  (highlight-80+-mode)
+  (setq show-trailing-whitespace t))
+
 (add-hook 'text-mode-hook
           (lambda () (visual-line-mode t)))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
+            (prog-common-hook)
             (setq tab-width 4)
             (setq indent-tabs-mode nil)
             (setq c-style "k&r")
             (setq c-basic-offset tab-width)
-            (flyspell-prog-mode)
-            (highlight-80+-mode)
             (subword-mode)
             (local-set-key [(control return)] 'semantic-complete-symbol)))
 
@@ -23,11 +27,10 @@
             (subword-mode)))
 
 (defun my-lisp-mode-hook ()
+  (prog-common-hook)
   (setq indent-tabs-mode nil)
   (highlight-parentheses-mode)
-  (paredit-mode)
-  (flyspell-prog-mode)
-  (highlight-80+-mode))
+  (paredit-mode))
 (add-hook 'lisp-mode-hook 'my-lisp-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode-hook)
 
@@ -46,33 +49,29 @@
 
 (add-hook 'nxml-mode-hook
           (lambda ()
+            (prog-common-hook)
             (setq tab-width 4)
             (setq indent-tabs-mode nil)
             (setq nxml-child-indent tab-width)
-            (setq nxml-outline-child-indent tab-width)
-            (flyspell-prog-mode)
-            (highlight-80+-mode)))
+            (setq nxml-outline-child-indent tab-width)))
 
 (add-hook 'html-mode-hook
           (lambda ()
+            (prog-common-hook)
             (setq sgml-basic-offset 4)
-            (setq indent-tabs-mode nil)
-            (flyspell-prog-mode)
-            (highlight-80+-mode)))
+            (setq indent-tabs-mode nil)))
 
 (add-hook 'css-mode-hook
           (lambda ()
+            (prog-common-hook)
             (setq tab-width 4)
-            (setq indent-tabs-mode nil)
-            (flyspell-prog-mode)
-            (highlight-80+-mode)))
+            (setq indent-tabs-mode nil)))
 
 (add-hook 'js-mode-hook
           (lambda ()
+            (prog-common-hook)
             (setq tab-width 4)
             (setq indent-tabs-mode nil)
-            (flyspell-prog-mode)
-            (highlight-80+-mode)
             (subword-mode)
             (setq inferior-js-program-command "node")
             (ansi-color-for-comint-mode-on)
@@ -87,19 +86,17 @@
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()
+            (prog-common-hook)
             (add-to-list 'TeX-output-view-style '("^.*$" "." "xdg-open %o"))
             (if (fboundp 'Tex-PDF-Mode)
                 (TeX-PDF-mode t)
               (if (fboundp 'tex-pdf-mode)
                   (tex-pdf-mode t)))
-            (auto-fill-mode t)
-            (flyspell-mode t)
-            (highlight-80+-mode)))
+            (auto-fill-mode t)))
 
 (add-hook 'python-mode-hook
           (lambda ()
-            (flyspell-prog-mode)
-            (highlight-80+-mode)
+            (prog-common-hook)
             (setq safe-local-variable-values
                   '((python-indent . 2)))))
 
@@ -113,19 +110,17 @@
 
 (add-hook 'groovy-mode-hook
           (lambda ()
-            (subword-mode)
-            (flyspell-prog-mode)
-            (highlight-80+-mode)))
+            (prog-common-hook)
+            (subword-mode)))
 
 (add-hook 'php-mode-hook
           (lambda ()
-            (flyspell-prog-mode)
-            (highlight-80+-mode)))
+            (prog-common-hook)
+            (subword-mode)))
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (flyspell-prog-mode)
-            (highlight-80+-mode)
+            (prog-common-hook)
             (rvm-activate-corresponding-ruby)
             (inf-ruby-keys)
             (setq ruby-deep-indent-paren nil)))
