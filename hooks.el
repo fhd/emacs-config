@@ -53,19 +53,23 @@
             (setq tab-width 4)
             (setq indent-tabs-mode nil)
             (setq nxml-child-indent tab-width)
-            (setq nxml-outline-child-indent tab-width)))
+            (setq nxml-outline-child-indent tab-width)
+            (setq safe-local-variable-values '((nxml-child-indent . 2)
+                                               (nxml-attribute-indent . 2)))))
 
 (add-hook 'html-mode-hook
           (lambda ()
             (prog-common-hook)
             (setq sgml-basic-offset 4)
-            (setq indent-tabs-mode nil)))
+            (setq indent-tabs-mode nil)
+            (setq safe-local-variable-values '((sgml-basic-offset . 2)))))
 
 (add-hook 'css-mode-hook
           (lambda ()
             (prog-common-hook)
             (setq tab-width 4)
-            (setq indent-tabs-mode nil)))
+            (setq indent-tabs-mode nil)
+            (setq safe-local-variable-values '((css-indent-offset . 2)))))
 
 (add-hook 'js-mode-hook
           (lambda ()
@@ -124,5 +128,9 @@
             (rvm-activate-corresponding-ruby)
             (inf-ruby-keys)
             (setq ruby-deep-indent-paren nil)))
+
+(add-hook 'sh-mode
+          (lambda ()
+            (setq safe-local-variable-values '((sh-basic-offset . 2)))))
 
 (provide 'hooks)
