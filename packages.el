@@ -79,7 +79,8 @@
 ;; objc-mode for .mm
 (add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
 
-;; js-mode for .jsm
+;; js-mode for .jsm and .gyp
 (add-to-list 'auto-mode-alist '("\\.jsm$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.gyp$" . js-mode))
 
 (provide 'packages)
