@@ -51,8 +51,8 @@
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 
 ;; ruby-mode for Gemfile and Vagrantfile
-(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("^Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("^Vagrantfile$" . ruby-mode))
 
 ;; mustache-mode
 (require 'mustache-mode)
