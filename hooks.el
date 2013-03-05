@@ -133,4 +133,8 @@
           (lambda ()
             (setq safe-local-variable-values '((sh-basic-offset . 2)))))
 
+(add-hook 'lua-mode-hook
+          (lambda ()
+            (setq lua-indent-level 2)))
+
 (provide 'hooks)
