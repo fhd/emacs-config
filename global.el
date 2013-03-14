@@ -12,6 +12,7 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq ido-enable-flex-matching t)
+(setq ido-auto-merge-work-directories-length -1)
 (ido-mode t)
 (if (>= emacs-major-version 24)
     (load-theme 'wombat t))
