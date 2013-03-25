@@ -137,4 +137,8 @@
           (lambda ()
             (setq lua-indent-level 2)))
 
+(add-hook 'nginx-mode-hook
+          (lambda ()
+            (setq nginx-indent-level 2)))
+
 (provide 'hooks)
