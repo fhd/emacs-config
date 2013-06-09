@@ -135,7 +135,9 @@
 
 (add-hook 'lua-mode-hook
           (lambda ()
-            (setq lua-indent-level 2)))
+            (prog-common-hook)
+            (setq lua-indent-level 2)
+            (setq indent-tabs-mode nil)))
 
 (add-hook 'nginx-mode-hook
           (lambda ()
