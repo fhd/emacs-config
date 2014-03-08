@@ -91,4 +91,7 @@
 (require 'lua-mode)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 
+;; xml-mode for xul
+(add-to-list 'auto-mode-alist '("\\.xul$" . nxml-mode))
+
 (provide 'packages)
