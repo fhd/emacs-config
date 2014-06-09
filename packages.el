@@ -54,12 +54,6 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
-;; mustache-mode
-(require 'mustache-mode)
-(setq tpl-basic-offset 4)
-(defalias 'mustache-mode 'tpl-mode)
-(add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
-
 ;; php-mode
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
@@ -93,5 +87,14 @@
 
 ;; xml-mode for xul
 (add-to-list 'auto-mode-alist '("\\.xul$" . nxml-mode))
+
+;; web-mode for html et al
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 (provide 'packages)
