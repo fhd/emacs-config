@@ -88,6 +88,22 @@
             (setq safe-local-variable-values
                   '((js-indent-level . 2)))))
 
+(add-hook 'web-mode-hook
+          (lambda ()
+            (prog-common-hook)
+            (setq indent-tabs-mode nil)
+            (setq web-mode-markup-indent-offset 4)
+            (setq web-mode-css-indent-offset 4)
+            (setq web-mode-code-indent-offset 4)
+            (setq web-mode-style-padding 4)
+            (setq web-mode-script-padding 4)
+            (setq safe-local-variable-values
+                  '((web-mode-markup-indent-offset . 2)
+                    (web-mode-css-indent-offset . 2)
+                    (web-mode-code-indent-offset . 2)
+                    (web-mode-style-padding . 2)
+                    (web-mode-script-padding . 2)))))
+
 (add-hook 'LaTeX-mode-hook
           (lambda ()
             (prog-common-hook)
