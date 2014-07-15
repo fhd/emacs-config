@@ -53,4 +53,16 @@ If no region is defined, all words in the buffer are counted."
             (restart-emacs)))
     (message "Configuration already up-to-date.")))
 
+;; TODO: Handle media queries
+;; TODO: Handle wrapped lines
+;; TODO: Ignore vendor prefixes
+(defun sort-css-properties ()
+  "Sort CSS properties alphabetically."
+  (interactive)
+  (let ((start (search-forward "{"))
+        (end (search-forward "}")))
+    (when (and start end)
+      (sort-lines nil start end)
+      (sort-declarations))))
+
 (provide 'commands)
