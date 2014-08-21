@@ -159,8 +159,4 @@
           (lambda ()
             (setq nginx-indent-level 2)))
 
-(add-hook 'term-exec-hook
-          (lambda ()
-            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
-
 (provide 'hooks)
