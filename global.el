@@ -51,4 +51,7 @@
   (interactive (list my-term-shell)))
 (ad-activate 'ansi-term)
 
+;; Workaround from https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
+(require 'iso-transl)
+
 (provide 'global)
