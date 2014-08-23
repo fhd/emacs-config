@@ -54,4 +54,7 @@
 ;; Workaround from https://bugs.launchpad.net/emacs-snapshot/+bug/1251176
 (require 'iso-transl)
 
+;; Disable email composing
+(global-unset-key (kbd "C-x m"))
+
 (provide 'global)
