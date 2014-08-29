@@ -14,7 +14,6 @@
 (setq ido-enable-flex-matching t)
 (setq ido-auto-merge-work-directories-length -1)
 (ido-mode t)
-(set-face-attribute 'default nil :height 100)
 
 (if (>= emacs-major-version 24)
     (load-theme 'wombat t))
