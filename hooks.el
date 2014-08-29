@@ -1,5 +1,4 @@
 (defun prog-common-hook ()
-  (flyspell-prog-mode)
   (highlight-80+-mode)
   (setq show-trailing-whitespace t))
 
@@ -120,13 +119,8 @@
             (setq safe-local-variable-values
                   '((python-indent . 2)))))
 
-(add-hook 'flyspell-mode-hook
-          (lambda ()
-            (auto-dictionary-mode)))
-
 (add-hook 'org-mode-hook (lambda ()
-                           (auto-fill-mode t)
-                           (flyspell-mode t)))
+                           (auto-fill-mode t)))
 
 (add-hook 'groovy-mode-hook
           (lambda ()
