@@ -16,7 +16,10 @@
             (local-set-key [(control return)] 'semantic-complete-symbol)))
 
 (add-hook 'c++-mode-hook
-          (lambda () (setq c-style "stroustrup")))
+          (lambda ()
+            (setq c-style "stroustrup")
+            (setq safe-local-variable-values
+                  '((eval c-set-offset 'statement-cont '++)))))
 
 (add-hook 'java-mode-hook
           (lambda ()
