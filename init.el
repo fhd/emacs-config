@@ -1,6 +1,5 @@
-(setq emacs-d "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
 
-(add-to-list 'load-path emacs-d)
 (require 'global)
 (require 'commands)
 (require 'hooks)

@@ -1,5 +1,3 @@
-(add-to-list 'load-path (concat emacs-d "site-lisp"))
-
 ;; package.el
 (require 'package)
 (package-initialize)
