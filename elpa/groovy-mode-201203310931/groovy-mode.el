@@ -1,10 +1,12 @@
 ;;; groovy-mode.el --- Groovy mode derived mode
 
-;;  Author: Russel Winder <russel@russel.org.uk>
+;;  Author: Russel Winder <russel@winder.org.uk>
 ;;  Created: 2006-08-01
-;;  Version: 20110609
+;;  Version: 201203310931
 
-;;  Copyright (C) 2006,2009-10 Russel Winder
+;;;; NB Version number is date and time yyyymmddhhMM in GMT (aka UTC).
+
+;;  Copyright (C) 2006,2009-10,2012 Russel Winder
 
 ;;  This program is free software; you can redistribute it and/or modify it under the terms of the GNU
 ;;  General Public License as published by the Free Software Foundation; either version 2 of the License, or
@@ -19,7 +21,7 @@
 
 ;;; Authors:
 ;;
-;;  Russel Winder <russel.winder@concertant.com>, 2006--
+;;  Russel Winder <russel@winder.org.uk>, 2006--
 ;;  Jim Morris <morris@wolfman.com>, 2009--
 
 ;;; Commentary:
@@ -75,10 +77,10 @@
 ;; (eval-after-load "font-lock" ...) but then some trickery is necessary to get them compiled.)
 (eval-when-compile
   (let ((load-path
-         (if (and (boundp 'byte-compile-dest-file)
-                  (stringp byte-compile-dest-file))
-             (cons (file-name-directory byte-compile-dest-file) load-path)
-           load-path)))
+	 (if (and (boundp 'byte-compile-dest-file)
+		  (stringp byte-compile-dest-file))
+	     (cons (file-name-directory byte-compile-dest-file) load-path)
+	   load-path)))
     (load "cc-mode" nil t) ; C# mode has this
     (load "cc-fonts" nil t) ; C# mode has this
     (load "cc-langs" nil t) ; C# mode has this
@@ -115,8 +117,8 @@ it.  The operator group types are:
 'prefix         Unary prefix operators.
 'postfix        Unary postfix operators.
 'postfix-if-paren
-                Unary postfix operators if and only if the chars have
-                parenthesis syntax.
+		Unary postfix operators if and only if the chars have
+		parenthesis syntax.
 'left-assoc     Binary left associative operators (i.e. a+b+c means (a+b)+c).
 'right-assoc    Binary right associative operators (i.e. a=b=c means a=(b=c)).
 'right-assoc-sequence
@@ -139,61 +141,61 @@ since CC Mode treats every identifier as an expression."
   groovy `(
            ;; Primary.
            ,@(c-lang-const c-identifier-ops)
-
+             
              (postfix-if-paren "<" ">") ; Templates.
-
+             
              (prefix "super")
-
+             
              ;; Postfix.
              (left-assoc "." "*." "?." ".&" ".@")
-
+             
              (postfix "++" "--" "[" "]" "(" ")" "<:" ":>")
-
+             
              ;; Unary.
              (prefix "++" "--" "+" "-" "!" "~" "new" "(" ")")
-
+             
              ;; Multiplicative.
              (left-assoc "*" "/" "%")
-
+             
              ;; Additive.
              (left-assoc "+" "-")
-
+             
              ;; Shift.
              (left-assoc "<<" ">>" ">>>")
-
+             
              ;; Relational.
              (left-assoc "<" ">" "<=" ">=" "instanceof" "<=>")
-
+             
              ;; Matching.
              (left-assoc "=~" "==~" )
 
              ;; Equality.
              (left-assoc "==" "!=" )
-
+             
              ;; Bitwise and.
              (left-assoc "&")
-
+             
              ;; Bitwise exclusive or.
              (left-assoc "^")
-
+             
              ;; Bitwise or.
              (left-assoc "|")
-
+             
              ;; Logical and.
              (left-assoc "&&")
-
+             
              ;; Logical or.
              (left-assoc "||")
-
+             
              ;; Conditional.
              (right-assoc-sequence "?" ":")
-
+             
              ;; Assignment.
              (right-assoc ,@(c-lang-const c-assignment-operators))
-
+             
              ;; Exception.
              ;(prefix "throw") ; Java mode didn't have this but c++ mode does.  Humm...
-
+             
              ;; Sequence.
              (left-assoc ",")
 
@@ -207,7 +209,7 @@ since CC Mode treats every identifier as an expression."
                           "&" "|" "^" "~" "<<" ">>" ">>>"
                           "==" "!=" ">" "<" ">=" "<="
                           "<=>"
-                          "=~" "==~"
+                          "=~" "==~" 
                           "++" "--" "+=" "-=" "*=" "/=" "%="
                           "&=" "|=" "^=" "~=" "<<=" ">>=" ">>>="
                           "!" "&&" "||"))
@@ -229,14 +231,14 @@ since CC Mode treats every identifier as an expression."
 ;; counts as a virtual one.
 (defun groovy-at-vsemi-p ( &optional pos )
   (save-excursion
-        (let ((pos-or-point (if pos (goto-char pos) (point))))
-          (if (eq pos-or-point (point-min))
-                  nil
-                (and
-                 (not (char-equal (char-before) ?\;))
-                 (groovy-ws-or-comment-to-eol-p pos-or-point)
-                 (groovy-not-in-statement-p pos-or-point)
-                 (groovy-not-if-or-else-etc-p pos-or-point))))))
+	(let ((pos-or-point (if pos (goto-char pos) (point))))
+	  (if (eq pos-or-point (point-min))
+		  nil
+		(and
+		 (not (char-equal (char-before) ?\;))
+		 (groovy-ws-or-comment-to-eol-p pos-or-point)
+		 (groovy-not-in-statement-p pos-or-point)
+		 (groovy-not-if-or-else-etc-p pos-or-point))))))
 
 (c-lang-defconst c-at-vsemi-p-fn
                  groovy 'groovy-at-vsemi-p)
@@ -272,16 +274,16 @@ since CC Mode treats every identifier as an expression."
 (defun groovy-not-if-or-else-etc-p ( pos )
   (save-excursion
     (goto-char pos)
-        (back-to-indentation)
-        (not
-         (or
-          (and (looking-at "if") ; make sure nothing else on line
-                   (progn (forward-sexp 2)
-                                  (groovy-ws-or-comment-to-eol-p (point))))
-          (and (looking-at "}?else")
-                   (progn (forward-char)
-                                  (forward-sexp 1)
-                                  (groovy-ws-or-comment-to-eol-p (point))))))))
+	(back-to-indentation)
+	(not
+	 (or 
+	  (and (looking-at "if") ; make sure nothing else on line
+		   (progn (forward-sexp 2)
+				  (groovy-ws-or-comment-to-eol-p (point))))
+	  (and (looking-at "}?else")
+		   (progn (forward-char)
+				  (forward-sexp 1)
+				  (groovy-ws-or-comment-to-eol-p (point))))))))
 
 (defun groovy-vsemi-status-unknown-p () nil)
 
@@ -368,7 +370,7 @@ need for `java-font-lock-extra-types'.")
   "Syntax table used in Groovy mode buffers.")
 (or groovy-mode-syntax-table
     (setq groovy-mode-syntax-table
-          (funcall (c-lang-const c-make-mode-syntax-table groovy))))
+	  (funcall (c-lang-const c-make-mode-syntax-table groovy))))
 
 (defvar groovy-mode-abbrev-table nil
   "Abbreviation table used in groovy-mode buffers.")
@@ -400,9 +402,11 @@ need for `java-font-lock-extra-types'.")
 ;                (cons "Groovy" (c-lang-const c-mode-menu groovy)))
 
 ;;; Autoload mode trigger
-;(add-to-list 'auto-mode-alist '("\\.groovy" . groovy-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.groovy$" . groovy-mode))
 
 ;; Custom variables
+;;;###autoload
 (defcustom groovy-mode-hook nil
   "*Hook called by `groovy-mode'."
   :type 'hook
@@ -414,13 +418,13 @@ need for `java-font-lock-extra-types'.")
 ;; if we are in a closure that has an argument eg ends with -> (excluding comment) then
 ;; change indent else lineup with previous one
 (defun groovy-mode-fix-closure-with-argument (langelem)
-  (save-excursion
-        (back-to-indentation)
-        (c-backward-syntactic-ws)
-        (backward-char 2)
-        (if (looking-at "->")                                  ; if the line has a -> in it
-                (vector (+ (current-indentation) c-basic-offset))  ; then indent from base
-          0)))
+  (save-excursion 
+	(back-to-indentation)	
+	(c-backward-syntactic-ws)
+	(backward-char 2)
+	(if (looking-at "->")                                  ; if the line has a -> in it 
+		(vector (+ (current-indentation) c-basic-offset))  ; then indent from base
+	  0)))
 
 ;; A helper function from: http://mihai.bazon.net/projects/emacs-javascript-mode/javascript.el
 ;; Originally named js-lineup-arglist, renamed to groovy-lineup-arglist
@@ -453,32 +457,32 @@ need for `java-font-lock-extra-types'.")
 ;; so make it statement.
 (defadvice c-guess-basic-syntax (after c-guess-basic-syntax-groovy activate)
   (when (is-groovy-mode)
-        (save-excursion
-          (let* ((ankpos (progn
-                                           (beginning-of-line)
-                                           (c-backward-syntactic-ws)
-                                           (beginning-of-line)
-                                           (c-forward-syntactic-ws)
-                                           (point))) ; position to previous non-blank line
-                         (curelem (c-langelem-sym (car ad-return-value))))
-                (end-of-line)
-                (cond
-                 ((eq 'statement-cont curelem)
-                  (when (groovy-at-vsemi-p) ; if there is a virtual semi there then make it a statement
-                        (setq ad-return-value `((statement ,ankpos)))))
-
-                 ((eq 'topmost-intro-cont curelem)
-                  (when (groovy-at-vsemi-p) ; if there is a virtual semi there then make it a top-most-intro
-                        (setq ad-return-value `((topmost-intro ,ankpos)))))
-
-                 )))))
+	(save-excursion
+	  (let* ((ankpos (progn 
+					   (beginning-of-line)
+					   (c-backward-syntactic-ws)
+					   (beginning-of-line)
+					   (c-forward-syntactic-ws)
+					   (point))) ; position to previous non-blank line
+			 (curelem (c-langelem-sym (car ad-return-value))))
+		(end-of-line)
+		(cond
+		 ((eq 'statement-cont curelem)
+		  (when (groovy-at-vsemi-p) ; if there is a virtual semi there then make it a statement
+			(setq ad-return-value `((statement ,ankpos)))))
+		 
+		 ((eq 'topmost-intro-cont curelem)
+		  (when (groovy-at-vsemi-p) ; if there is a virtual semi there then make it a top-most-intro
+			(setq ad-return-value `((topmost-intro ,ankpos)))))
+		
+		 )))))
 
 ;; This disables bracelists, as most of the time in groovy they are closures
 ;; We need to check we are currently in groovy mode
 (defadvice c-inside-bracelist-p (around groovy-c-inside-bracelist-p activate)
   (if (not (is-groovy-mode))
-          ad-do-it
-        (setq ad-return-value nil)))
+	  ad-do-it
+ 	(setq ad-return-value nil)))
 
 
 ;; based on java-function-regexp
@@ -514,8 +518,8 @@ need for `java-font-lock-extra-types'.")
    "[ \t\n\r]*"                                ; whitespace
 ;   "\\(throws\\([, \t\n\r]\\|[a-zA-Z0-9_$]\\)+\\)?{"
    "\\(throws[^{;]+\\)?"                       ; optional exceptions
-   "[;{]"                                      ; ending ';' (interfaces) or '{'
-                                                                                       ; TODO groovy interfaces don't need to end in ;
+   "[;{]"                                      ; ending ';' (interfaces) or '{' 
+										       ; TODO groovy interfaces don't need to end in ;
    )
   "Matches method names in groovy code, select match 2")
 
@@ -531,7 +535,7 @@ need for `java-font-lock-extra-types'.")
   (list (list nil groovy-function-regexp 2)
         (list ".CLASSES." groovy-class-regexp 2)
         (list ".INTERFACES." groovy-interface-regexp 2)
-                (list ".CLOSURES."      "def[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)[ \t]*=[ \t]*{" 1))
+		(list ".CLOSURES." 	"def[ \t]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)[ \t]*=[ \t]*{" 1))
   "Imenu expression for Groovy")
 
 
@@ -541,6 +545,7 @@ need for `java-font-lock-extra-types'.")
   "Imenu generic expression for Groovy mode.  See `imenu-generic-expression'.")
 
 ;;; The entry point into the mode
+;;;###autoload
 (defun groovy-mode ()
   "Major mode for editing Groovy code.
 
@@ -554,9 +559,9 @@ Key bindings:
   (c-initialize-cc-mode t)
   (set-syntax-table groovy-mode-syntax-table)
   (setq major-mode 'groovy-mode
-        mode-name "Groovy"
-        local-abbrev-table groovy-mode-abbrev-table
-        abbrev-mode t)
+	mode-name "Groovy"
+	local-abbrev-table groovy-mode-abbrev-table
+	abbrev-mode t)
   (use-local-map groovy-mode-map)
   (c-init-language-vars groovy-mode)
   (c-common-init 'groovy-mode)
@@ -578,6 +583,8 @@ Key bindings:
 
   (c-update-modeline))
 
+;;;###autoload
+(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
 
 (provide 'groovy-mode)
 
