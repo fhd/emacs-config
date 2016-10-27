@@ -95,4 +95,9 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
+;; editorconfig
+(add-to-list 'load-path "~/.emacs.d/site-lisp/editorconfig-0.7.8")
+(require 'editorconfig)
+(editorconfig-mode 1)
+
 (provide 'packages)
