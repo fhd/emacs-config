@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "groovy-mode" "groovy-mode.el" (21743 26150
-;;;;;;  0 0))
+;;;### (autoloads nil "groovy-mode" "groovy-mode.el" (22546 1163
+;;;;;;  432033 912000))
 ;;; Generated autoloads from groovy-mode.el
 
 (add-to-list 'auto-mode-alist '("\\.groovy$" . groovy-mode))
@@ -29,8 +29,8 @@ Key bindings:
 
 ;;;***
 
-;;;### (autoloads nil nil ("groovy-mode-pkg.el") (21743 26150 599090
-;;;;;;  0))
+;;;### (autoloads nil nil ("groovy-mode-pkg.el") (22546 1163 452913
+;;;;;;  83000))
 
 ;;;***
 
