@@ -1,5 +1,6 @@
 ;; package.el
-(require 'package)
+(when (< emacs-major-version 24)
+  (load-file "~/.emacs.d/site-lisp/packages/package.el"))
 (package-initialize)
 (add-to-list 'package-archives '("marmalade" .
                                  "http://marmalade-repo.org/packages/"))
@@ -33,7 +34,7 @@
 (add-to-list 'auto-mode-alist '("\.gradle$" . groovy-mode))
 
 ;; actionscript-mode
-(require 'actionscript-mode)
+(load-file "~/.emacs.d/site-lisp/packages/actionscript-mode.el")
 (add-to-list 'auto-mode-alist '("\.as$" . actionscript-mode))
 
 ;; clojure-mode for clojurescript
@@ -60,7 +61,7 @@
 (add-to-list 'auto-mode-alist '("\\.qss$" . css-mode))
 
 ;; c-header-guess-mode for .h files
-(require 'c-header-guess-mode)
+(load-file "~/.emacs.d/site-lisp/packages/c-header-guess-mode.el")
 (add-to-list 'auto-mode-alist '("\\.h$" . c-header-guess-mode))
 
 ;; cmake-mode
@@ -71,7 +72,8 @@
 ;; objc-mode for .mm
 (add-to-list 'auto-mode-alist '("\\.mm$" . objc-mode))
 
-;; js-mode for .jsm and .gyp
+;; js-mode
+(load-file "~/.emacs.d/site-lisp/packages/js.el")
 (add-to-list 'auto-mode-alist '("\\.jsm$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.gyp$" . js-mode))
 
@@ -80,7 +82,7 @@
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; lua-mode
-(require 'lua-mode)
+(load-file "~/.emacs.d/site-lisp/packages/lua-mode.el")
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 
 ;; xml-mode for xul
@@ -95,8 +97,11 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
+;; java-mode-indent-annotations
+(load-file "~/.emacs.d/site-lisp/packages/java-mode-indent-annotations.el")
+
 ;; editorconfig
-(add-to-list 'load-path "~/.emacs.d/site-lisp/editorconfig-0.7.8")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/packages/editorconfig-0.7.8")
 (require 'editorconfig)
 (editorconfig-mode 1)
 

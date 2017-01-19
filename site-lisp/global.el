@@ -34,6 +34,8 @@
    '(term-default-fg-color ((t (:inherit term-color-white))))
    '(term-default-bg-color ((t (:inherit term-color-black))))))
 
+(add-to-list 'default-frame-alist '(alpha 90))
+
 (when window-system
   (tool-bar-mode -1)
   (menu-bar-mode t)
