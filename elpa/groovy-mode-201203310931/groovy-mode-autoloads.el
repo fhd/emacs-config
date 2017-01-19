@@ -1,10 +1,10 @@
 ;;; groovy-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "groovy-mode" "groovy-mode.el" (22546 1163
-;;;;;;  432033 912000))
+;;;### (autoloads nil "groovy-mode" "groovy-mode.el" (22656 45915
+;;;;;;  0 0))
 ;;; Generated autoloads from groovy-mode.el
 
 (add-to-list 'auto-mode-alist '("\\.groovy$" . groovy-mode))
@@ -29,16 +29,9 @@ Key bindings:
 
 ;;;***
 
-;;;### (autoloads nil nil ("groovy-mode-pkg.el") (22546 1163 452913
-;;;;;;  83000))
-
-;;;***
-
-(provide 'groovy-mode-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; groovy-mode-autoloads.el ends here
