@@ -1,5 +1,4 @@
 (defun prog-common-hook ()
-  (highlight-80+-mode)
   (setq show-trailing-whitespace t))
 
 (add-hook 'text-mode-hook
