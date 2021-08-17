@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -7,20 +9,23 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(backup-directory-alist '(("" . "~/.emacs.d/backup")))
+ '(backup-directory-alist (quote (("" . "~/.emacs.d/backup"))))
  '(column-number-mode t)
- '(custom-enabled-themes '(tsdh-dark))
+ '(custom-enabled-themes (quote (tsdh-dark)))
  '(editorconfig-mode t)
  '(exec-path
-   '("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin"))
+   (quote
+    ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_14" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin")))
  '(fill-column 80)
  '(indent-tabs-mode nil)
  '(package-archives
-   '(("gnu" . "https://elpa.gnu.org/packages/")
+   (quote
+    (("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa-stable" . "https://stable.melpa.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")))
+     ("melpa" . "https://melpa.org/packages/"))))
  '(package-selected-packages
-   '(clojure-mode svelte-mode po-mode prettier js2-mode kotlin-mode groovy-mode gradle-mode php-mode editorconfig yaml-mode multi-term csv-mode typescript-mode markdown-mode todotxt-mode todotxt))
+   (quote
+    (web-mode clojure-mode svelte-mode po-mode prettier js2-mode kotlin-mode groovy-mode gradle-mode php-mode editorconfig yaml-mode multi-term csv-mode typescript-mode markdown-mode todotxt-mode todotxt)))
  '(show-paren-mode t)
  '(transient-mark-mode t)
  '(truncate-lines nil)
