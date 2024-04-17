@@ -8,7 +8,9 @@
 (use-package smartparens
   :ensure t
   :hook (prog-mode . smartparens-strict-mode)
-  :bind (:map smartparens-mode-map ("M-(" . sp-wrap-round))
+  :bind (:map smartparens-mode-map
+	 ("M-(" . sp-wrap-round)
+	 ("M-S-<backspace>" . sp-backward-unwrap-sexp))
   :config
   (require 'smartparens-config))
 
