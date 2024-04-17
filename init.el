@@ -15,4 +15,5 @@
 (require 'visual)
 (require 'convenience)
 (require 'programming)
+(require 'file-types)
 (require 'my-org)
