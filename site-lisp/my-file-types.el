@@ -15,4 +15,8 @@
   :defer t
   :mode ("\\.html$" "\\.php$"))
 
+(use-package gdscript-mode
+  :ensure t
+  :defer t)
+
 (provide 'my-file-types)
