@@ -23,4 +23,9 @@
   :ensure t
   :defer t)
 
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode ("\\.html$" "\\.php$"))
+
 (provide 'programming)
