@@ -29,4 +29,4 @@
   :defer t
   :mode ("\\.html$" "\\.php$"))
 
-(provide 'programming)
+(provide 'my-programming)

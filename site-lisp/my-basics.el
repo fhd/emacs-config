@@ -15,4 +15,4 @@
   :ensure t
   :bind ("C-c t" . vterm))
 
-(provide 'basics)
+(provide 'my-basics)

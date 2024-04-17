@@ -25,4 +25,4 @@
   :ensure t
   :config (setq completion-styles '(orderless basic)))
 
-(provide 'convenience)
+(provide 'my-convenience)

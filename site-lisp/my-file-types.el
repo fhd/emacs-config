@@ -6,4 +6,4 @@
   :ensure t
   :defer t)
 
-(provide 'file-types)
+(provide 'my-file-types)
