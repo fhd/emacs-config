@@ -7,7 +7,7 @@
 
 (use-package smartparens
   :ensure t
-  :hook (prog-mode . smartparens-mode)
+  :hook (prog-mode . smartparens-strict-mode)
   :bind (:map smartparens-mode-map ("M-(" . sp-wrap-round))
   :config
   (require 'smartparens-config))
