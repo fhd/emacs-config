@@ -1,11 +1,6 @@
 /auto-save-list
-/server
-/elpa/archive-contents
-/elpa/builtin-packages
-/elpa/archives
-/session.*
-/tramp
-/url
-srecode-map.el
-*.elc
-/ido.last
+/eln-cache
+/elpa
+/projectile-bookmarks.eld
+/projects
+/recentf
