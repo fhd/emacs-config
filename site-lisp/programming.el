@@ -19,4 +19,8 @@
   :defer t
   :config (treemacs-project-follow-mode))
 
+(use-package yaml-mode
+  :ensure t
+  :defer t)
+
 (provide 'programming)
