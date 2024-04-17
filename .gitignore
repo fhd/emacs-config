@@ -1,5 +1,6 @@
 /.cache
 /auto-save-list
+/custom.el
 /eln-cache
 /elpa
 /projects
