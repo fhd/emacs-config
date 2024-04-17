@@ -29,4 +29,8 @@
   (add-to-list 'slime-lisp-implementations '(roswell ("ros" "-Q" "run")))
   (setq slime-default-lisp 'roswell))
 
+(use-package cider
+  :ensure t
+  :defer t)
+
 (provide 'my-programming)
