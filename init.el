@@ -15,4 +15,4 @@
 (require 'visual)
 (require 'convenience)
 (require 'programming)
-(require 'org)
+(require 'my-org)
