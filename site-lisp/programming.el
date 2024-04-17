@@ -9,18 +9,7 @@
 
 (use-package treemacs
   :ensure t
-  :defer t)
-
-;; TODO: Consider switching to project.el.
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-
-(use-package treemacs-projectile
-  :ensure t
-  :after (treemacs projectile)
+  :defer t
   :config (treemacs-project-follow-mode))
 
 (provide 'programming)
