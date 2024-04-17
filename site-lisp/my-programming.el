@@ -25,6 +25,7 @@
   :defer t
   :config
   ;; Use Roswell for SLIME
+  ;; TODO: Maybe move this to dir-locals, feels wrong to hard code.
   (load (expand-file-name "~/.roswell/helper.el"))
   (add-to-list 'slime-lisp-implementations '(roswell ("ros" "-Q" "run")))
   (setq slime-default-lisp 'roswell))
