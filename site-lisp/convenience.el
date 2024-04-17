@@ -3,6 +3,9 @@
 
 (global-auto-revert-mode)
 
+;; TODO: Only for text-mode and prog-mode derived modes.
+(column-number-mode)
+
 (use-package recentf
   :config (recentf-mode))
 
