@@ -1,5 +1,4 @@
 ;; TODO: Automatically reload/save buffers (the way prelude has it).
-;; TODO: Show which keys a command is bound to (the way prelude has it).
 ;; TODO: Test marginalia.
 ;; TODO: Test safehist to safe minibuffer history.
 
