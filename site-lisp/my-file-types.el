@@ -19,4 +19,20 @@
   :ensure t
   :defer t)
 
+(use-package rust-mode
+  :ensure t
+  :defer t)
+
+(use-package typescript-mode
+  :ensure t
+  :defer t)
+
+(use-package kotlin-mode
+  :ensure t
+  :defer t)
+
+(use-package clojure-mode
+  :ensure t
+  :defer t)
+
 (provide 'my-file-types)
