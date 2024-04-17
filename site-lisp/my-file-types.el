@@ -35,4 +35,8 @@
   :ensure t
   :defer t)
 
+(use-package lua-mode
+  :ensure t
+  :defer t)
+
 (provide 'my-file-types)
