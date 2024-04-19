@@ -8,7 +8,9 @@
 ;; TODO: Disable angle brackets as pairs in js-mode, web-mode, possibly others.
 (use-package smartparens
   :ensure t
-  :hook (prog-mode . smartparens-strict-mode)
+  :hook ((prog-mode . smartparens-strict-mode)
+	 (comint-mode . smartparens-strict-mode)
+	 (cider-repl-mode . smartparens-strict-mode))
   :bind (:map smartparens-mode-map
 	 ("M-(" . sp-wrap-round)
 	 ("M-S-<backspace>" . sp-backward-unwrap-sexp))
