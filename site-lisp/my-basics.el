@@ -15,4 +15,9 @@
   :ensure t
   :bind ("C-c t" . vterm))
 
+(use-package editorconfig
+  :ensure t
+  :defer t
+  :config (editorconfig-mode))
+
 (provide 'my-basics)
