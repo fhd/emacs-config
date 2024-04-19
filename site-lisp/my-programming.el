@@ -13,6 +13,8 @@
 	 (cider-repl-mode . smartparens-strict-mode))
   :bind (:map smartparens-mode-map
 	 ("M-(" . sp-wrap-round)
+	 ("M-[" . sp-wrap-square)
+	 ("M-{" . sp-wrap-curly)
 	 ("M-S-<backspace>" . sp-backward-unwrap-sexp))
   :config
   (require 'smartparens-config))
