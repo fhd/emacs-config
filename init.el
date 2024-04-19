@@ -1,3 +1,5 @@
+;; TODO: Deal with mixed tabs/spaces in Emacs Lisp
+
 (let ((required-version 29))
  (when (< emacs-major-version required-version)
    (error "Emacs %s or greater needed" required-version)))
