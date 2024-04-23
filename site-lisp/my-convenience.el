@@ -1,5 +1,4 @@
 ;; TODO: Test marginalia.
-;; TODO: Test safehist to safe minibuffer history.
 ;; TODO: Check out that mode from prelude that showed help for a key sequence.
 
 (global-auto-revert-mode)
@@ -9,6 +8,9 @@
 
 (use-package recentf
   :config (recentf-mode))
+
+(use-package savehist
+  :config (savehist-mode))
 
 (use-package repeat
   :config (repeat-mode))
