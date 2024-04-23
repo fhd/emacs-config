@@ -2,7 +2,6 @@
   :ensure t
   :config
   (global-corfu-mode)
-  ;; TODO: Neither TAB nor M-TAB work, using corfu-auto as a fallback.
   (setq corfu-auto 1))
 
 ;; TODO: Disable angle brackets as pairs in js-mode, web-mode, possibly others.

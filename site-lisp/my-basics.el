@@ -8,6 +8,8 @@
 
 (setq-default indent-tabs-mode nil)
 
+(setq tab-always-indent 'complete)
+
 (use-package server
   :config
   (unless (server-running-p)
