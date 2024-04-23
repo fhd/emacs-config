@@ -2,7 +2,12 @@
   :ensure t
   :config
   (global-corfu-mode)
-  (setq corfu-auto 1))
+  (setq corfu-auto t)
+  (setq corfu-popupinfo-delay '(1.0 . 0.5))
+  (corfu-popupinfo-mode t)
+  (corfu-history-mode t)
+  (with-eval-after-load 'savehist
+    (add-to-list 'savehist-additional-variables 'corfu-history)))
 
 ;; TODO: Disable angle brackets as pairs in js-mode, web-mode, possibly others.
 (use-package smartparens
