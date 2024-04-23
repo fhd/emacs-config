@@ -18,7 +18,7 @@
 (use-package consult
   :ensure t
   :bind (("C-x b" . consult-buffer)
-	 ("M-g o" . consult-outline)))
+         ("M-g o" . consult-outline)))
 
 (use-package vertico
   :ensure t

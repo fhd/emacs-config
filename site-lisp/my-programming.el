@@ -9,13 +9,13 @@
 (use-package smartparens
   :ensure t
   :hook ((prog-mode . smartparens-strict-mode)
-	 (comint-mode . smartparens-strict-mode)
-	 (cider-repl-mode . smartparens-strict-mode))
+         (comint-mode . smartparens-strict-mode)
+         (cider-repl-mode . smartparens-strict-mode))
   :bind (:map smartparens-mode-map
-	 ("M-(" . sp-wrap-round)
-	 ("M-[" . sp-wrap-square)
-	 ("M-{" . sp-wrap-curly)
-	 ("M-S-<backspace>" . sp-backward-unwrap-sexp))
+              ("M-(" . sp-wrap-round)
+              ("M-[" . sp-wrap-square)
+              ("M-{" . sp-wrap-curly)
+              ("M-S-<backspace>" . sp-backward-unwrap-sexp))
   :config
   (require 'smartparens-config))
 

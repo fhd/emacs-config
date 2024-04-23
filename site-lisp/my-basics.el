@@ -6,6 +6,8 @@
 (setq-default fill-column 80)
 (add-hook 'org-mode-hook (lambda () (setq-local fill-column 70)))
 
+(setq-default indent-tabs-mode nil)
+
 (use-package server
   :config
   (unless (server-running-p)
