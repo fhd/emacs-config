@@ -1,6 +1,3 @@
-;; TODO: Test marginalia.
-;; TODO: Check out that mode from prelude that showed help for a key sequence.
-
 (global-auto-revert-mode)
 
 ;; TODO: Only for text-mode and prog-mode derived modes.
@@ -24,8 +21,16 @@
   :ensure t
   :config (vertico-mode))
 
+(use-package marginalia
+  :ensure t
+  :config (marginalia-mode))
+
 (use-package orderless
   :ensure t
   :config (setq completion-styles '(orderless basic)))
+
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
 
 (provide 'my-convenience)
