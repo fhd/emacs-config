@@ -9,10 +9,10 @@
   (with-eval-after-load 'savehist
     (add-to-list 'savehist-additional-variables 'corfu-history)))
 
-;; TODO: Disable angle brackets as pairs in js-mode, web-mode, possibly others.
 (use-package smartparens
   :ensure t
-  :hook ((prog-mode . smartparens-strict-mode)
+  :hook ((lisp-data-mode . smartparens-strict-mode)
+         (clojure-mode . smartparens-strict-mode)
          (comint-mode . smartparens-strict-mode)
          (cider-repl-mode . smartparens-strict-mode))
   :bind (:map smartparens-mode-map
