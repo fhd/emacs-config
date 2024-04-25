@@ -1,3 +1,14 @@
+(setq c-default-style
+      '((c++-mode . "stroustrup")
+        (csharp-mode . "csharp")
+        (java-mode . "java")
+        (awk-mode . "awk")
+        (other . "k&r")))
+
+(use-package js
+  :custom
+  (js-switch-indent-offset 2))
+
 (use-package markdown-mode
   :ensure t
   :defer t)
