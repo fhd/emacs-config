@@ -21,7 +21,6 @@
 
 (use-package editorconfig
   :ensure t
-  :defer t
   :config (editorconfig-mode))
 
 ;; Open mailto: links in external application.
