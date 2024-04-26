@@ -13,7 +13,8 @@
   :ensure t
   :hook ((lisp-data-mode . smartparens-strict-mode)
          (clojure-mode . smartparens-strict-mode)
-         (comint-mode . smartparens-strict-mode)
+         ;; TODO: Only slime, not run-python etc.
+         ;;(comint-mode . smartparens-strict-mode)
          (cider-repl-mode . smartparens-strict-mode))
   :bind (:map smartparens-mode-map
               ("M-(" . sp-wrap-round)
