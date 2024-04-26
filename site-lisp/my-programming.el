@@ -44,10 +44,10 @@
   :defer t
   :config (poetry-tracking-mode))
 
-;; TODO: Add that minor mode for executing code
 (use-package nodejs-repl
   :ensure t
-  :defer t)
+  :defer t
+  :hook ((js-mode . nodejs-repl-minor-mode)))
 
 (use-package cider
   :ensure t
