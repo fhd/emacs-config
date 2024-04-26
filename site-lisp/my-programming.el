@@ -11,6 +11,7 @@
 
 (use-package smartparens
   :ensure t
+  :defer t
   :hook ((lisp-data-mode . smartparens-strict-mode)
          (clojure-mode . smartparens-strict-mode)
          (slime-mode . smartparens-strict-mode)
