@@ -43,6 +43,11 @@
   :defer t
   :config (poetry-tracking-mode))
 
+;; TODO: Add that minor mode for executing code
+(use-package nodejs-repl
+  :ensure t
+  :defer t)
+
 (use-package cider
   :ensure t
   :defer t)
