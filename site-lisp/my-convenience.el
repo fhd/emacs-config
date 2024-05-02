@@ -33,4 +33,6 @@
   :ensure t
   :config (which-key-mode))
 
+;; TODO: Install magit (or whatever made rebasing so nice in Prelude)
+
 (provide 'my-convenience)
