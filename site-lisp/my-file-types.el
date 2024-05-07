@@ -58,4 +58,8 @@
   :ensure t
   :defer t)
 
+(use-package ledger-mode
+  :ensure t
+  :defer t)
+
 (provide 'my-file-types)
