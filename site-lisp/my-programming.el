@@ -1,3 +1,7 @@
+;; Disabled because it's more annoying than helpful - especially in web-mode
+;; when using tabs.
+(electric-indent-mode -1)
+
 (use-package corfu
   :ensure t
   :config
