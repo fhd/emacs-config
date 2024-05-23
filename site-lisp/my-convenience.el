@@ -33,6 +33,26 @@
   :ensure t
   :config (which-key-mode))
 
+;; TODO: Improve integration
+;; TODO: Don't hard code paths
+(use-package languagetool
+  :ensure t
+  :defer t
+  :commands (languagetool-check
+             languagetool-clear-suggestions
+             languagetool-correct-at-point
+             languagetool-correct-buffer
+             languagetool-set-language
+             languagetool-server-mode
+             languagetool-server-start
+             languagetool-server-stop)
+  :config
+  (setq languagetool-java-arguments '("-Dfile.encoding=UTF-8"))
+  (setq languagetool-console-command
+        "~/Software/LanguageTool/languagetool-commandline.jar")
+  (setq languagetool-server-command
+        "~/Software/LanguageTool/languagetool-server.jar"))
+
 ;; TODO: Install magit (or whatever made rebasing so nice in Prelude)
 
 (provide 'my-convenience)
