@@ -46,7 +46,7 @@
 (use-package poetry
   :ensure t
   :defer t
-  :config (poetry-tracking-mode))
+  :hook ((python-mode . poetry-tracking-mode)))
 
 (use-package nodejs-repl
   :ensure t
