@@ -36,8 +36,8 @@
   :ensure t
   :config (which-key-mode))
 
-;; TODO: Improve integration
-;; TODO: Don't hard code paths
+;; TODO: Improve integration.
+;; TODO: Don't hard code paths.
 (use-package languagetool
   :ensure t
   :defer t
