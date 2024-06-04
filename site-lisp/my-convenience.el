@@ -65,5 +65,8 @@
 
 (setq enable-recursive-minibuffers t)
 
+(use-package wgrep
+  :ensure t)
+
 
 (provide 'my-convenience)
