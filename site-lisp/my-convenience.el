@@ -57,5 +57,13 @@
         "~/Software/LanguageTool/languagetool-server.jar"))
 
 ;; TODO: Install magit (or whatever made rebasing so nice in Prelude)
+(use-package embark
+  :ensure t)
+
+(use-package embark-consult
+  :ensure t)
+
+(setq enable-recursive-minibuffers t)
+
 
 (provide 'my-convenience)
