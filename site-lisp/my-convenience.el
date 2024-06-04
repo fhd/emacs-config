@@ -56,7 +56,6 @@
   (setq languagetool-server-command
         "~/Software/LanguageTool/languagetool-server.jar"))
 
-;; TODO: Install magit (or whatever made rebasing so nice in Prelude)
 (use-package embark
   :ensure t)
 
@@ -72,6 +71,9 @@
 (use-package diredfl
   :ensure t
   :hook ((dired-mode . diredfl-mode)))
+
+(use-package magit
+  :ensure t)
 
 
 (provide 'my-convenience)
