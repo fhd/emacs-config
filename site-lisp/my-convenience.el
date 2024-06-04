@@ -11,6 +11,10 @@
 (use-package repeat
   :config (repeat-mode))
 
+(use-package isearch
+  :config
+  (setq isearch-lazy-count t))
+
 (use-package consult
   :ensure t
   :bind (("C-x b" . consult-buffer)
