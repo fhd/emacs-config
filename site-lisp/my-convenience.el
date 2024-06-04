@@ -68,5 +68,10 @@
 (use-package wgrep
   :ensure t)
 
+;; TODO: Improve the colours.
+(use-package diredfl
+  :ensure t
+  :hook ((dired-mode . diredfl-mode)))
+
 
 (provide 'my-convenience)
