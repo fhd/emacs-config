@@ -28,4 +28,6 @@
 (setq browse-url-generic-program "open")
 (setq browse-url-mailto-function 'browse-url-generic)
 
+;; TODO: Disable tool-bar-mode properly.
+
 (provide 'my-basics)
