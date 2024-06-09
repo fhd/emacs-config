@@ -57,4 +57,7 @@
   :ensure t
   :defer t)
 
+(use-package realgud
+  :ensure t)
+
 (provide 'my-programming)
