@@ -24,9 +24,12 @@
 (use-package web-mode
   :ensure t
   :defer t
-  :mode ("\\.html$" "\\.php$")
+  :mode ("\\.html$")
   :config
   (setq web-mode-enable-auto-indentation nil))
+
+(use-package php-mode
+  :ensure t)
 
 (use-package gdscript-mode
   :ensure t
