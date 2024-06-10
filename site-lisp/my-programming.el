@@ -60,4 +60,7 @@
 (use-package realgud
   :ensure t)
 
+(use-package realgud-node-inspect
+  :ensure t)
+
 (provide 'my-programming)
