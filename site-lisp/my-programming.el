@@ -37,11 +37,10 @@
   :ensure t
   :defer t
   :config
-  ;; Use Roswell for SLIME
-  ;; TODO: Maybe move this to dir-locals, feels wrong to hard code.
-  (load (expand-file-name "~/.roswell/helper.el"))
-  (add-to-list 'slime-lisp-implementations '(roswell ("ros" "-Q" "run")))
-  (setq slime-default-lisp 'roswell))
+  ;; Use Roswell if installed.
+  (when-let ((roswell-helper "~/.roswell/helper.el")
+             (_ (file-exists-p roswell-helper)))
+    (load (expand-file-name roswell-helper))))
 
 (use-package poetry
   :ensure t
