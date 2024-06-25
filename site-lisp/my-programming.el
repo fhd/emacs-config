@@ -61,6 +61,11 @@
   :ensure t)
 
 (use-package realgud-node-inspect
-  :ensure t)
+  :ensure t
+  :init
+  ;; Disable native compilation because the package has some issues.
+  (add-to-list
+   'native-comp-jit-compilation-deny-list
+   "realgud-node-inspect.*"))
 
 (provide 'my-programming)
