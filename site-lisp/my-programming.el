@@ -2,6 +2,11 @@
 ;; when using tabs.
 (electric-indent-mode -1)
 
+(setq compilation-scroll-output 'first-error)
+
+;; If this isn't enough, fancy-compilation seems worth a try.
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
 (use-package corfu
   :ensure t
   :config
