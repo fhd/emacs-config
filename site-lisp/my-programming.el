@@ -47,6 +47,7 @@
              (_ (file-exists-p roswell-helper)))
     (load (expand-file-name roswell-helper))))
 
+;; TODO: It poetry-tracking-mode opens a weird buffer occasionally.
 (use-package poetry
   :ensure t
   :defer t

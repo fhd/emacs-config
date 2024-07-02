@@ -15,6 +15,7 @@
   (unless (server-running-p)
     (server-start)))
 
+;; TODO: Text killed in vterm can't be yanked again.
 (use-package vterm
   :ensure t
   :bind ("C-c t" . vterm))

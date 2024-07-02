@@ -72,8 +72,17 @@
   :ensure t
   :hook ((dired-mode . diredfl-mode)))
 
+;; TODO: Try out https://github.com/magit/forge
 (use-package magit
   :ensure t)
 
+;; TODO: Add some custom project.el commands, such as opening a vterm, opening
+;;       the README and such. Just having a command to open the project
+;;       directory in dired would be useful after switching projects, but
+;;       there's useless stuff like "VC-Dir" instead. Maybe I can change find
+;;       regex to use ripgrep if available?
+
+;; TODO: See if I can't automatically indent text below the TODO keyword in
+;;       comments.
 
 (provide 'my-convenience)
