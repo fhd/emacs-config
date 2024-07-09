@@ -100,7 +100,7 @@
     (interactive
      (list
       (read-regexp "Grep project: ")))
-    (let* ((default-directory (project-root (project-current t))))
+    (let ((default-directory (project-root (project-current t))))
       (rg regexp "*" default-directory)))
 
   (defun my-project-magit ()
