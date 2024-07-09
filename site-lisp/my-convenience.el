@@ -72,9 +72,12 @@
   :ensure t
   :hook ((dired-mode . diredfl-mode)))
 
-;; TODO: Try out https://github.com/magit/forge
 (use-package magit
   :ensure t)
+
+(use-package forge
+  :ensure t
+  :after magit)
 
 (use-package rg
   :ensure t)
