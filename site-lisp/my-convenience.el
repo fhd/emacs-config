@@ -82,7 +82,5 @@
 ;;       there's useless stuff like "VC-Dir" instead. Maybe I can change find
 ;;       regex to use ripgrep if available?
 
-;; TODO: See if I can't automatically indent text below the TODO keyword in
-;;       comments.
 
 (provide 'my-convenience)

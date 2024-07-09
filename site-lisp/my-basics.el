@@ -25,7 +25,6 @@
   :config (editorconfig-mode))
 
 ;; Open mailto: links in external application.
-;; TODO: Find a more portable approach for this.
 (setq browse-url-generic-program "open")
 (setq browse-url-mailto-function 'browse-url-generic)
 
