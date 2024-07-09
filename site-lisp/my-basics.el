@@ -30,4 +30,6 @@
 
 (tool-bar-mode -1)
 
+(setq xref-search-program (if (executable-find "rg")'ripgrep 'grep))
+
 (provide 'my-basics)
