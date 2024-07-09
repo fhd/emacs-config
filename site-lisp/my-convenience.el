@@ -84,7 +84,8 @@
   :ensure nil
   :bind
   (("C-x p t" . my-project-vterm)
-   ("C-x p g" . my-project-grep))
+   ("C-x p g" . my-project-grep)
+   ("C-x p m" . my-project-magit))
   :config
   (defun my-project-vterm ()
     (interactive)
@@ -102,11 +103,17 @@
     (let* ((default-directory (project-root (project-current t))))
       (rg regexp "*" default-directory)))
 
+  (defun my-project-magit ()
+    (interactive)
+    (let ((default-directory (project-root (project-current t))))
+      (magit-status default-directory)))
+
   (setopt project-switch-commands
           '((project-dired "Root dired")
             (project-find-file "Find file")
             (my-project-grep "Grep")
             (project-find-dir "Find directory")
+            (my-project-magit "Magit")
             (project-vc-dir "VC-Dir")
             (my-project-vterm "vterm"))))
 
