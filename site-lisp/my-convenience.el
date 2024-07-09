@@ -76,11 +76,38 @@
 (use-package magit
   :ensure t)
 
-;; TODO: Add some custom project.el commands, such as opening a vterm, opening
-;;       the README and such. Just having a command to open the project
-;;       directory in dired would be useful after switching projects, but
-;;       there's useless stuff like "VC-Dir" instead. Maybe I can change find
-;;       regex to use ripgrep if available?
+(use-package rg
+  :ensure t)
 
+;; TODO: Consider adding shortcuts for Magit and opening the README.
+(use-package project
+  :ensure nil
+  :bind
+  (("C-x p t" . my-project-vterm)
+   ("C-x p g" . my-project-grep))
+  :config
+  (defun my-project-vterm ()
+    (interactive)
+    (let* ((default-directory (project-root (project-current t)))
+           (default-project-term-name (project-prefixed-buffer-name "vterm"))
+           (term-buffer (get-buffer default-project-term-name)))
+      (if (and term-buffer (not current-prefix-arg))
+          (pop-to-buffer term-buffer (bound-and-true-p display-comint-buffer-action))
+        (vterm (generate-new-buffer-name default-project-term-name)))))
+
+  (defun my-project-grep (regexp)
+    (interactive
+     (list
+      (read-regexp "Grep project: ")))
+    (let* ((default-directory (project-root (project-current t))))
+      (rg regexp "*" default-directory)))
+
+  (setopt project-switch-commands
+          '((project-dired "Root dired")
+            (project-find-file "Find file")
+            (my-project-grep "Grep")
+            (project-find-dir "Find directory")
+            (project-vc-dir "VC-Dir")
+            (my-project-vterm "vterm"))))
 
 (provide 'my-convenience)
