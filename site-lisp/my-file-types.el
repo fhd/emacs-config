@@ -67,4 +67,12 @@
   :ensure t
   :defer t)
 
+(use-package plantuml-mode
+  :ensure t
+  :defer t
+  :mode ("\\.plantuml$")
+  :config
+  (setq plantuml-jar-path "~/Software/plantuml.jar")
+  (setq plantuml-default-exec-mode 'jar))
+
 (provide 'my-file-types)
