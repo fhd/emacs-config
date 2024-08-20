@@ -47,11 +47,17 @@
              (_ (file-exists-p roswell-helper)))
     (load (expand-file-name roswell-helper))))
 
-;; TODO: It poetry-tracking-mode opens a weird buffer occasionally.
 (use-package poetry
   :ensure t
   :defer t
-  :hook ((python-mode . poetry-tracking-mode)))
+  :hook ((python-mode . poetry-tracking-mode))
+  :config
+  ;; poetry-tracking-mode creates a *poetry* buffer which bothers me
+  ;; occasionally, this should bury it.
+  (defun my-bury-poetry-buffer (&rest _)
+    (when-let ((buffer (get-buffer (poetry-buffer-name))))
+      (bury-buffer buffer)))
+  (advice-add 'poetry-do-call :after 'my-bury-poetry-buffer))
 
 (use-package nodejs-repl
   :ensure t
