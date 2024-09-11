@@ -38,14 +38,14 @@
   :defer t
   :config (treemacs-project-follow-mode))
 
-(use-package slime
-  :ensure t
-  :defer t
-  :config
-  ;; Use Roswell if installed.
-  (when-let ((roswell-helper "~/.roswell/helper.el")
-             (_ (file-exists-p roswell-helper)))
-    (load (expand-file-name roswell-helper))))
+;; Load Slime from Roswell if available.
+;; TODO: Figure out how to load this lazily.
+(if-let ((roswell-helper "~/.roswell/helper.el")
+         (_ (file-exists-p roswell-helper)))
+    (load (expand-file-name roswell-helper))
+  (use-package slime
+    :ensure t
+    :defer t))
 
 (use-package poetry
   :ensure t
