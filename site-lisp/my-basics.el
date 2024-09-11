@@ -1,3 +1,6 @@
+;; Skip the tutorial buffer and open scratch instead.
+;;(setq initial-buffer-choice t)
+
 ;; Save backups in /tmp
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
