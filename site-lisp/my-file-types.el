@@ -73,6 +73,8 @@
   :mode ("\\.plantuml$")
   :config
   (setq plantuml-jar-path "~/Software/plantuml.jar")
-  (setq plantuml-default-exec-mode 'jar))
+  (setq plantuml-default-exec-mode 'jar)
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+  (setq org-plantuml-jar-path (expand-file-name plantuml-jar-path)))
 
 (provide 'my-file-types)
