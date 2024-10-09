@@ -77,4 +77,8 @@
   (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
   (setq org-plantuml-jar-path (expand-file-name plantuml-jar-path)))
 
+(use-package powershell
+  :ensure t
+  :defer t)
+
 (provide 'my-file-types)
