@@ -35,4 +35,8 @@
 
 (setq xref-search-program (if (executable-find "rg")'ripgrep 'grep))
 
+;; Switch command and option on macOS
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
+
 (provide 'my-basics)
