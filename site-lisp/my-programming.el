@@ -79,4 +79,9 @@
    'native-comp-jit-compilation-deny-list
    "realgud-node-inspect.*"))
 
+(use-package treesit-auto
+  :ensure t
+  :config
+  (global-treesit-auto-mode))
+
 (provide 'my-programming)
