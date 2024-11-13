@@ -15,7 +15,7 @@
 
 (use-package server
   :config
-  (unless (server-running-p)
+  (unless (or (server-running-p) (daemonp))
     (server-start)))
 
 ;; TODO: Text killed in vterm can't be yanked again.
