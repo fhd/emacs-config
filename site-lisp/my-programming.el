@@ -83,6 +83,11 @@
   :ensure t
   :config
   (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode))
+  (global-treesit-auto-mode)
+  ;; TODO: Find a less hacky way.
+  ;; Syntax highlighting in csharp-ts-mode seems broken.
+  (setq treesit-auto-langs (delete 'c-sharp treesit-auto-langs))
+  (setq auto-mode-alist
+        (delete '("\\.cs\\'" . csharp-ts-mode) auto-mode-alist)))
 
 (provide 'my-programming)
