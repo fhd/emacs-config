@@ -81,4 +81,8 @@
   :ensure t
   :defer t)
 
+(use-package conf-mode
+  :ensure nil
+  :mode ("\\.sln$"))
+
 (provide 'my-file-types)
