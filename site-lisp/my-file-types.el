@@ -81,6 +81,10 @@
   :ensure t
   :defer t)
 
+(use-package dart-mode
+  :ensure t
+  :defer t)
+
 (use-package conf-mode
   :ensure nil
   :mode ("\\.sln$"))
