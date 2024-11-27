@@ -7,6 +7,8 @@
 ;; If this isn't enough, fancy-compilation seems worth a try.
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
+(which-function-mode)
+
 (use-package corfu
   :ensure t
   :config
