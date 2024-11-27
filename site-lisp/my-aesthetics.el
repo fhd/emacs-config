@@ -6,12 +6,21 @@
     (set-face-attribute 'fill-column-indicator
                         nil :height 1 :foreground color :background color)))
 
+(set-face-attribute 'default nil :height 95)
+
+(global-visual-line-mode)
+
 (add-hook 'prog-mode-hook 'display-fill-column-indicator-mode)
 (add-hook 'text-mode-hook 'display-fill-column-indicator-mode)
 
-;; TODO: Looks a wee bit ugly with all those soft wrap markers and no margin.
-(use-package visual-fill-column
+(use-package olivetti
   :ensure t
-  :config (global-visual-fill-column-mode))
+  :hook ((text-mode . olivetti-mode))
+  :config (setq-default olivetti-body-width 100))
+
+(use-package adaptive-wrap
+  :ensure t
+  :after olivetti
+  :hook ((olivetti-mode . adaptive-wrap-prefix-mode)))
 
 (provide 'my-aesthetics)
