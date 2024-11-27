@@ -15,7 +15,8 @@
 
 (use-package olivetti
   :ensure t
-  :hook ((text-mode . olivetti-mode))
+  :hook ((text-mode . olivetti-mode)
+         (prog-mode . olivetti-mode))
   :config (setq-default olivetti-body-width 100))
 
 (use-package adaptive-wrap
