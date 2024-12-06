@@ -62,6 +62,15 @@
       (bury-buffer buffer)))
   (advice-add 'poetry-do-call :after 'my-bury-poetry-buffer))
 
+(use-package pyvenv
+  :ensure t)
+
+(use-package pyvenv-auto
+  :ensure t
+  :after pyvenv
+  :hook ((python-mode . pyvenv-auto-run)
+         (python-ts-mode . pyvenv-auto-run)))
+
 (use-package nodejs-repl
   :ensure t
   :defer t
