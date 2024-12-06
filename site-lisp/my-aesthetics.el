@@ -8,8 +8,8 @@
 
 ;; Bit of a hack, for reasons I haven't figured out yet, the font in macOS is
 ;; smaller.
-(if (not (eq system-type "darwin")
- (set-face-attribute 'default nil :height 95)))
+(if (not (eq system-type "darwin"))
+ (set-face-attribute 'default nil :height 95))
 
 (global-visual-line-mode)
 
