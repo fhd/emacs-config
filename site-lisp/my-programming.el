@@ -52,7 +52,8 @@
 (use-package poetry
   :ensure t
   :defer t
-  :hook ((python-mode . poetry-tracking-mode))
+  :hook ((python-mode . poetry-tracking-mode)
+         (python-ts-mode . poetry-tracking-mode))
   :config
   ;; poetry-tracking-mode creates a *poetry* buffer which bothers me
   ;; occasionally, this should bury it.
@@ -64,7 +65,8 @@
 (use-package nodejs-repl
   :ensure t
   :defer t
-  :hook ((js-mode . nodejs-repl-minor-mode)))
+  :hook ((js-mode . nodejs-repl-minor-mode)
+         (js-ts-mode . nodejs-repl-minor-mode)))
 
 (use-package cider
   :ensure t
