@@ -57,4 +57,9 @@
                  (buffer-string))
              nil))))
 
+(use-package google-this
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c /") 'google-this-mode-submap))
+
 (provide 'my-basics)
