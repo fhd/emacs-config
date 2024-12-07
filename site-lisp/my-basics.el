@@ -44,7 +44,7 @@
   :bind (("C-c g g" . gptel)
          ("C-c g s" . gptel-send)
          ("C-c g r" . gptel-rewrite)
-         ("C-c g a" . gptel-rewrite)
+         ("C-c g a" . gptel-add)
          ("C-c g m" . gptel-menu))
   :config
   (setq gptel-default-mode 'org-mode)
