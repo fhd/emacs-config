@@ -40,6 +40,21 @@
 (setq mac-option-modifier 'super)
 
 (use-package gptel
-  :ensure t)
+  :ensure t
+  :bind (("C-c g g" . gptel)
+         ("C-c g s" . gptel-send)
+         ("C-c g r" . gptel-rewrite)
+         ("C-c g a" . gptel-rewrite)
+         ("C-c g m" . gptel-menu))
+  :config
+  (setq gptel-default-mode 'org-mode)
+  (gptel-make-anthropic "Claude"
+    :stream t
+    :key (let ((anthropic-key-file (expand-file-name "~/.anthropic")))
+           (if (file-exists-p anthropic-key-file)
+               (with-temp-buffer
+                 (insert-file-contents anthropic-key-file)
+                 (buffer-string))
+             nil))))
 
 (provide 'my-basics)
