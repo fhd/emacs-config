@@ -39,4 +39,7 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
 
+(use-package gptel
+  :ensure t)
+
 (provide 'my-basics)
