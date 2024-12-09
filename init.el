@@ -17,3 +17,4 @@
 (require 'my-programming)
 (require 'my-file-types)
 (require 'my-org)
+(require 'my-utilities)
