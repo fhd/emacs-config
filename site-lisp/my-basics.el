@@ -48,14 +48,10 @@
          ("C-c g m" . gptel-menu))
   :config
   (setq gptel-default-mode 'org-mode)
-  (gptel-make-anthropic "Claude"
-    :stream t
-    :key (let ((anthropic-key-file (expand-file-name "~/.anthropic")))
-           (if (file-exists-p anthropic-key-file)
-               (with-temp-buffer
-                 (insert-file-contents anthropic-key-file)
-                 (buffer-string))
-             nil))))
+  (if-let* ((auth-info
+             (auth-source-search :host "api.anthropic.com" :user "apikey"))
+            (secret (plist-get (car auth-info) :secret)))
+      (gptel-make-anthropic "Claude" :stream t :key secret)))
 
 (use-package google-this
   :ensure t
