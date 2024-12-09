@@ -39,5 +39,10 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
 
+;; Hacky support for monorepos in project.el
+(add-hook 'project-find-functions
+          (lambda (dir)
+            (if-let ((marker (locate-dominating-file dir ".gitignore")))
+                (cons 'transient marker))))
 
 (provide 'my-basics)
