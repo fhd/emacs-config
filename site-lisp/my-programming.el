@@ -9,6 +9,13 @@
 
 (which-function-mode)
 
+(use-package eglot
+  :ensure nil
+  :bind (("C-c e e" . eglot)
+         ;; TODO: Only show these options when eglot is active.
+         ("C-c e a" . eglot-code-actions)
+         ("C-c e r" . eglot-rename)))
+
 (use-package corfu
   :ensure t
   :config
