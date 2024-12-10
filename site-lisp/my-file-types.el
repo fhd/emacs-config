@@ -93,4 +93,7 @@
   :ensure nil
   :mode ("\\.csproj$"))
 
+(use-package terraform-mode
+  :ensure t)
+
 (provide 'my-file-types)
