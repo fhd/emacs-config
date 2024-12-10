@@ -15,6 +15,7 @@
   :ensure t
   :after org
   :config
-  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
+  (setq verb-auto-kill-response-buffers t))
 
 (provide 'my-org)
