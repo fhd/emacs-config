@@ -89,4 +89,8 @@
   :ensure nil
   :mode ("\\.sln$"))
 
+(use-package nxml-mode
+  :ensure nil
+  :mode ("\\.csproj$"))
+
 (provide 'my-file-types)
