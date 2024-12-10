@@ -110,4 +110,10 @@
   (setq auto-mode-alist
         (delete '("\\.cs\\'" . csharp-ts-mode) auto-mode-alist)))
 
+(use-package web-mode
+  :ensure nil
+  :config
+  ;; TODO: Do this only for .html files in actual Django projects.
+  (setq web-mode-engines-alist '(("django" . "\\.html\\'"))))
+
 (provide 'my-programming)
