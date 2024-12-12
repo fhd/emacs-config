@@ -10,7 +10,11 @@
   (if-let* ((auth-info
              (auth-source-search :host "api.anthropic.com" :user "apikey"))
             (secret (plist-get (car auth-info) :secret)))
-      (gptel-make-anthropic "Claude" :stream t :key secret)))
+      (gptel-make-anthropic "Claude" :stream t :key secret))
+  (if-let* ((auth-info
+             (auth-source-search :host "generativelanguage.googleapis.com" :user "apikey"))
+            (secret (plist-get (car auth-info) :secret)))
+      (gptel-make-gemini "Gemini" :stream t :key secret)))
 
 (use-package google-this
   :ensure t
