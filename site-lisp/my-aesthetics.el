@@ -6,6 +6,7 @@
   (let ((color "#2f3855"))
     (set-face-attribute 'fill-column-indicator nil
                         :height 1 :foreground color :background color))
+  ;; TODO: This isn't set on startup.
   (copy-face 'highlight 'vterm-color-bright-black))
 
 ;; Bit of a hack, for reasons I haven't figured out yet, the font in macOS is
