@@ -96,4 +96,8 @@
 (use-package terraform-mode
   :ensure t)
 
+(use-package groovy-mode
+  :ensure t
+  :mode ("\\.gradle$"))
+
 (provide 'my-file-types)
