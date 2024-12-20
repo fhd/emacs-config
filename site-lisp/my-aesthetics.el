@@ -10,6 +10,7 @@
   (with-eval-after-load 'vterm
    (copy-face 'highlight 'vterm-color-bright-black)))
 
+;; TODO: Font is still tiny on macOS.
 ;; Bit of a hack, for reasons I haven't figured out yet, the font in macOS is
 ;; smaller.
 (if (not (eq system-type "darwin"))
