@@ -24,7 +24,7 @@
 (use-package web-mode
   :ensure t
   :defer t
-  :mode ("\\.html$" "\\.razor$")
+  :mode ("\\.html$" "\\.razor$" "\\.cshtml$")
   :config
   (setq web-mode-enable-auto-indentation nil))
 
