@@ -10,7 +10,8 @@
   (if-let* ((auth-info
              (auth-source-search :host "api.anthropic.com" :user "apikey"))
             (secret (plist-get (car auth-info) :secret)))
-      (gptel-make-anthropic "Claude" :stream t :key secret))
+      (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key secret)
+            gptel-model "claude-3-5-sonnet-20241022"))
   (if-let* ((auth-info
              (auth-source-search :host "generativelanguage.googleapis.com" :user "apikey"))
             (secret (plist-get (car auth-info) :secret)))
