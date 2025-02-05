@@ -8,7 +8,7 @@
 /tramp
 /transient
 /history
-/forge-database.sqlite
+/forge-database*.sqlite
 /url/
 /.cask
 /tree-sitter
