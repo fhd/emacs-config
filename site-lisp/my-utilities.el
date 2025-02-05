@@ -17,6 +17,10 @@
              (auth-source-search :host "generativelanguage.googleapis.com" :user "apikey"))
             (secret (plist-get (car auth-info) :secret)))
       (gptel-make-gemini "Gemini" :stream t :key secret))
+  (if-let* ((auth-info
+             (auth-source-search :host "kagi.com" :user "apikey"))
+            (secret (plist-get (car auth-info) :secret)))
+      (gptel-make-kagi "Kagi" :key secret))
 
   (defun my-gptel-prompt ()
     (interactive)
