@@ -52,4 +52,15 @@
   :config
   (global-set-key (kbd "C-c /") 'google-this-mode-submap))
 
+(use-package kagi
+  :ensure t
+  :bind (("C-c k k" . kagi-fastgpt-prompt)
+         ("C-c k s" . kagi-fastgpt-shell))
+  :custom
+  (kagi-api-token
+   (lambda ()
+     (if-let* ((auth-info
+                (auth-source-search :host "kagi.com" :user "apikey")))
+         (funcall (plist-get (car auth-info) :secret))))))
+
 (provide 'my-utilities)
