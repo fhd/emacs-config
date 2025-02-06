@@ -1,3 +1,8 @@
+(defun my-read-auth-info-secret (host user)
+  (if-let* ((auth-info (car (auth-source-search :host host :user user)))
+            (secret (plist-get auth-info :secret)))
+      (funcall secret)))
+
 (use-package gptel
   :ensure t
   :bind (("C-c g g" . gptel)
@@ -8,18 +13,13 @@
          ("C-c g p" . my-gptel-prompt))
   :config
   (setq gptel-default-mode 'org-mode)
-  (if-let* ((auth-info
-             (auth-source-search :host "api.anthropic.com" :user "apikey"))
-            (secret (plist-get (car auth-info) :secret)))
+  (if-let ((secret (my-read-auth-info-secret "api.anthropic.com" "apikey")))
       (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key secret)
             gptel-model "claude-3-5-sonnet-20241022"))
-  (if-let* ((auth-info
-             (auth-source-search :host "generativelanguage.googleapis.com" :user "apikey"))
-            (secret (plist-get (car auth-info) :secret)))
+  (if-let ((secret (my-read-auth-info-secret
+                    "generativelanguage.googleapis.com" "apikey")))
       (gptel-make-gemini "Gemini" :stream t :key secret))
-  (if-let* ((auth-info
-             (auth-source-search :host "kagi.com" :user "apikey"))
-            (secret (plist-get (car auth-info) :secret)))
+  (if-let ((secret (my-read-auth-info-secret "kagi.com" "apikey")))
       (gptel-make-kagi "Kagi" :key secret))
 
   (defun my-gptel-prompt ()
@@ -57,10 +57,6 @@
   :bind (("C-c k k" . kagi-fastgpt-prompt)
          ("C-c k s" . kagi-fastgpt-shell))
   :custom
-  (kagi-api-token
-   (lambda ()
-     (if-let* ((auth-info
-                (auth-source-search :host "kagi.com" :user "apikey")))
-         (funcall (plist-get (car auth-info) :secret))))))
+  (kagi-api-token (lambda () (my-read-auth-info-secret "kagi.com" "apikey"))))
 
 (provide 'my-utilities)
