@@ -116,4 +116,8 @@
   ;; TODO: Do this only for .html files in actual Django projects.
   (setq web-mode-engines-alist '(("django" . "\\.html\\'"))))
 
+(use-package go-mode
+  :ensure t
+  :defer t)
+
 (provide 'my-programming)
