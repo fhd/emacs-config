@@ -121,4 +121,8 @@
   :ensure t
   :defer t)
 
+(use-package svelte-mode
+  :ensure t
+  :defer t)
+
 (provide 'my-programming)
