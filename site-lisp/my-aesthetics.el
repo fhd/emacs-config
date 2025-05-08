@@ -31,11 +31,16 @@
 
 ;; TODO: Find a way to show the entire mode line, with or without
 ;; smart-mode-line.
-(use-package smart-mode-line
+;; (use-package smart-mode-line
+;;   :ensure t
+;;   :config
+;;   (setq sml/no-confirm-load-theme t)
+;;   (setq sml/theme 'respectful)
+;;   (sml/setup))
+
+;; Needs (nerd-icons-install-fonts).
+(use-package doom-modeline
   :ensure t
-  :config
-  (setq sml/no-confirm-load-theme t)
-  (setq sml/theme 'respectful)
-  (sml/setup))
+  :config (doom-modeline-mode))
 
 (provide 'my-aesthetics)
