@@ -12,7 +12,6 @@
 (use-package eglot
   :ensure nil
   :bind (("C-c e e" . eglot)
-         ;; TODO: Only show these options when eglot is active.
          ("C-c e c" . eglot-code-actions)
          ("C-c e r" . eglot-rename)))
 
