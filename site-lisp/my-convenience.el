@@ -58,7 +58,15 @@
         "~/Software/LanguageTool/languagetool-server.jar"))
 
 (use-package embark
-  :ensure t)
+  :ensure t
+  :bind
+  (:map minibuffer-local-map
+        ("C-c C-c" . embark-collect)
+        ("C-c C-e" . embark-export))
+  :config
+  (add-to-list 'display-buffer-alist
+               '((derived-mode . embark-collect-mode)
+                 (display-buffer-at-bottom))))
 
 (use-package embark-consult
   :ensure t)
