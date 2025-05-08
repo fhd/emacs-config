@@ -8,8 +8,9 @@
 (use-package savehist
   :config (savehist-mode))
 
-(use-package repeat
-  :config (repeat-mode))
+(use-package ace-window
+  :ensure t
+  :bind ("C-x o" . ace-window))
 
 (use-package isearch
   :config
