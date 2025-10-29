@@ -15,7 +15,7 @@
   (setq gptel-default-mode 'org-mode)
   (if-let ((secret (my-read-auth-info-secret "api.anthropic.com" "apikey")))
       (setq gptel-backend (gptel-make-anthropic "Claude" :stream t :key secret)
-            gptel-model "claude-sonnet-4-20250514"))
+            gptel-model "claude-sonnet-4-5-20250929"))
   (if-let ((secret (my-read-auth-info-secret
                     "generativelanguage.googleapis.com" "apikey")))
       (gptel-make-gemini "Gemini" :stream t :key secret))
