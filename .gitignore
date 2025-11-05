@@ -13,3 +13,4 @@
 /.cask
 /tree-sitter
 /multisession
+/org-persist
