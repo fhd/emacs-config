@@ -90,13 +90,16 @@
 (use-package realgud
   :ensure t)
 
-(use-package realgud-node-inspect
-  :ensure t
-  :init
-  ;; Disable native compilation because the package has some issues.
-  (add-to-list
-   'native-comp-jit-compilation-deny-list
-   "realgud-node-inspect.*"))
+;; This one gives me trouble on macOS for some reason.
+(when
+    (not (eq system-type 'darwin))
+  (use-package realgud-node-inspect
+    :ensure t
+    :init
+    ;; Disable native compilation because the package has some issues.
+    (add-to-list
+     'native-comp-jit-compilation-deny-list
+     "realgud-node-inspect.*")))
 
 (use-package treesit-auto
   :ensure t
